@@ -5,6 +5,7 @@ This is a CS405 Final Project at University of Kentucky.
 _Note: Structure of this git repo is tentative, I'm still playing around with stuff_
 
 ## Tools used:
+* Python 3.6 (Anaconda 4.3.0)
 * Django https://www.djangoproject.com/
 * MySQL Database
 * Any front end stuff...
