@@ -8,6 +8,7 @@ _Note: Structure of this git repo is tentative, I'm still playing around with st
 * Python 3.6 (Anaconda 4.3.0)
 * Django https://www.djangoproject.com/
 * MySQL Database
+* _mysqlclient_ Python to MySQL interface
 * Any front end stuff...
 
 ## How to get started:
