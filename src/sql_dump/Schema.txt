@@ -17,7 +17,9 @@ Editors(id: int(11), name: varchar(20), dob: date)
 Tags(mid: int(11), tag: varchar(20))
 
 Users(id: int(20, firstname: varchar(20), middle: char(1), lastname: varchar(20), username: varchar(20), dob: date, gender: char(1), access: varchar(20))
-
-Ratings(uid: int(11), mid: int(11), rating: int(11))
+dkjfkjfasjdf
+Ratings(uiakfjadslkfd: int(11), mid: int(11), rating: int(11))
 
 Reviews(uid: int(11), mid: int(11), review: varchar(256))
+
+// Ratings(uid: int(11), mid: int(11), rating: int(11))
