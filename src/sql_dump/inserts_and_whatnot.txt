@@ -56,16 +56,16 @@
 
 
 movies
-1 - fight club 1999
-2 - there will be blood 2007
-3 - the fly 1986
-4 - jurassic park 1993
-9 - wolf of wallstreet 2013
-5 - the shining 1980
-10 - pulp fiction 1994
-6 - requiem for a dream 2000
-7 - mystic river 2003
-8 - the shawshank redemption 1994
+1 - fight club 1999 - R
+2 - there will be blood 2007 - R
+3 - the fly 1986 - R
+4 - jurassic park 1993 - PG-13
+9 - wolf of wallstreet 2013 - R
+5 - the shining 1980 - R
+10 - pulp fiction 1994 - R
+6 - requiem for a dream 2000 - R
+7 - mystic river 2003 - R
+8 - the shawshank redemption 1994 - R
 
 insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('Fight Club', 'drama', '1999', 'English', '139', 'An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more.', '5', '1', '1', '1');
 insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('There Will Be Blood', 'drama', '2007', 'English', '158', 'A story of family, religion, hatred, oil and madness, focusing on a turn-of-the-century prospector in the early days of the business.', '1', '2', '2', '2');
@@ -73,18 +73,129 @@ insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`
 insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('Jurassic Park', 'adventure', '1993', 'English', '127', 'During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.', '6', '4', '4', '4');
 insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values  ('The Wolf Of Wallstreet', 'biography', '2013', 'English', '179', 'Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.', '8', '5', '5', '5');
 insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('The Shining', 'horror', '1980', 'English', '146', 'A family heads to an isolated hotel for the winter where an evil and spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from the past and of the future.', '3', '6', '6', '6');
-insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('Pulp Fiction', 'drama', '1994', 'English', '154', 'The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', '2', '7', '7', '7');
+insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('Pulp Fiction', 'drama', '1994', 'English', '154', 'The lives of two mob hit men, a boxer, a gangsters wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', '2', '7', '7', '7');
 insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('Requiem For A Dream', 'drama', '2000', 'English', '102', 'The drug-induced utopias of four Coney Island people are shattered when their addictions run deep.', '9', '8', '8', '8');
 insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('Mystic River', 'crime', '2003', 'English', '138', 'With a childhood tragedy that overshadowed their lives, three men are reunited by circumstance when one has a family tragedy.', '4', '9', '9', '9');
 insert into movie(`title`, `genre`, `release`, `language`, `duration`, `summary`, `did`, `pid`, `swid`, `eid`) values ('The Shawshank Redemption', 'crime', '1994', 'English', '142', 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', '10', '10', '10', '10');
 
-daniel day-lewis
-tim robbins
-jarred leto
-helena bohnam-carter
-jeff goldblum
-jack nicholson
-leonardo dicaprio
-morgan freeman
-sam neill
-bruce willis
+1 - daniel day-lewis - 2 - Daniel Plainview
+2 - tim robbins - 8 - Andy Dufresne - 7 - Dave Boyle
+3 - jarred leto - 1 - Angel Face - 6 - Harry Goldfarb
+4 - helena bohnam-carter - 1 - Marla Singer
+5 - jeff goldblum - 3 - Seth Brundle - 4 - Malcolm
+6 - jack nicholson - 5 - Jack Torrance
+7 - leonardo dicaprio - 9 - Jordan Belfort
+8 - morgan freeman - 8 - Ellis Boyd 'Red' Redding
+9 - sam neill - 4 - Grant
+10 - bruce willis - 10 - Butch Coolidge
+
+insert into acted_in(`aid`, `mid`, `role`) values ('1', '2', 'Daniel Plainview');
+insert into acted_in(`aid`, `mid`, `role`) values ('2', '8', 'Andy Dufresne');
+insert into acted_in(`aid`, `mid`, `role`) values ('2', '7', 'Dave Boyle');
+insert into acted_in(`aid`, `mid`, `role`) values ('3', '1', 'Angel Face');
+insert into acted_in(`aid`, `mid`, `role`) values ('3', '6', 'Harry Goldfarb');
+insert into acted_in(`aid`, `mid`, `role`) values ('4', '1', 'Marla Singer');
+insert into acted_in(`aid`, `mid`, `role`) values ('5', '3', 'Seth Brundle');
+insert into acted_in(`aid`, `mid`, `role`) values ('5', '4', 'Malcolm');
+insert into acted_in(`aid`, `mid`, `role`) values ('6', '5', 'Jack Torrance');
+insert into acted_in(`aid`, `mid`, `role`) values ('7', '9', 'Jordan Belfort');
+insert into acted_in(`aid`, `mid`, `role`) values ('8', '8', 'Ellis Boyd Red Redding');
+insert into acted_in(`aid`, `mid`, `role`) values ('9', '4', 'Grant');
+insert into acted_in(`aid`, `mid`, `role`) values ('10', '10', 'Butch Coolidge');
+
+
+insert into tags(`mid`, `tag`) values ('1', 'Action Packed');
+insert into tags(`mid`, `tag`) values ('1', 'Trippy');
+insert into tags(`mid`, `tag`) values ('1', 'Twist Ending');
+insert into tags(`mid`, `tag`) values ('2', 'Intense');
+insert into tags(`mid`, `tag`) values ('2', 'Dark');
+insert into tags(`mid`, `tag`) values ('2', 'Suspenseful');
+insert into tags(`mid`, `tag`) values ('3', 'Gore');
+insert into tags(`mid`, `tag`) values ('3', 'Scary');
+insert into tags(`mid`, `tag`) values ('4', 'Awesome');
+insert into tags(`mid`, `tag`) values ('4', 'Dinosaurs');
+insert into tags(`mid`, `tag`) values ('4', 'Classic');
+insert into tags(`mid`, `tag`) values ('5', 'Crazed');
+insert into tags(`mid`, `tag`) values ('5', 'Bloody');
+insert into tags(`mid`, `tag`) values ('6', 'Soundtrack');
+insert into tags(`mid`, `tag`) values ('6', 'Gritty');
+insert into tags(`mid`, `tag`) values ('6', 'Drugs');
+insert into tags(`mid`, `tag`) values ('7', 'Suspenseful');
+insert into tags(`mid`, `tag`) values ('7', 'Sad');
+insert into tags(`mid`, `tag`) values ('8', 'Powerful');
+insert into tags(`mid`, `tag`) values ('8', 'Inspiring');
+insert into tags(`mid`, `tag`) values ('9', 'Fast Paced');
+insert into tags(`mid`, `tag`) values ('9', 'Drugs');
+insert into tags(`mid`, `tag`) values ('10', 'Classic');
+insert into tags(`mid`, `tag`) values ('10', 'Cerebral');
+
+Users(id: int(20, firstname: varchar(20), middle: char(1), lastname: varchar(20), username: varchar(20), dob: date, gender: char(1), access: varchar(20))
+
+insert into user(`firstname`, `middle`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Ollie', 'T', 'Boxer', 'boxman420', '1963-01-21', 'm', 'manager');
+insert into user(`firstname`, `middle`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Rossana', 'M', 'Stratman', 'moviewatcher64', '1964-09-28', 'f', 'standard');
+insert into user(`firstname`, `middle`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Gwyneth', 'A', 'Gatz', 'gwyngatz', '1973-07-03', 'f', 'manager');
+insert into user(`firstname`, `middle`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Britt', 'B', 'Sibert', 'sicritic', '1976-03-18', 'f', 'manager');
+insert into user(`firstname`, `middle`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Marline', 'S', 'Toto', 'mst1979', '1979-01-26', 'f', 'standard');
+insert into user(`firstname`, `middle`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Graham', 'D', 'Dennett', 'goldengraham', '1984-02-29', 'm', 'manager');
+insert into user(`firstname`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Daniele', 'Marinez', 'filmarinez', '1985-06-29', 'f', 'manager');
+insert into user(`firstname`, `middle`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Camila', 'R', 'Gass', 'gassgirl25', '1992-04-08', 'f', 'manager');
+insert into user(`firstname`, `middle`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Carl', 'E', 'Siegal', 'siegcninoit', '1995-05-16', 'm', 'manager');
+insert into user(`firstname`, `lastname`, `username`, `dob`, `gender`, `access`) values ('Phil', 'Keaton', 'phillykeatman', '1997-03-06', 'm', 'standard');
+
+Some randomly generated names
+
+Ollie Boxer
+Rossana Stratman
+Gwyneth Gatz
+Britt Sibert
+Marline Toto
+Graham Dennett
+Daniele Marinez
+Camila Gass
+Carl Siegal
+Phil Keaton
+
+Some randomly generated birthdays
+
+1963-01-21
+1964-09-28
+1973-07-03
+1976-03-18
+1979-01-26
+1984-02-29
+1985-06-29
+1992-04-08
+1995-05-16
+1997-03-06
+
+1
+3
+4
+6
+7
+8
+9
+
+insert into rating(`uid`, `mid`, `rating`) values ('1', '1', '5');
+insert into rating(`uid`, `mid`, `rating`) values ('3', '2', '4');
+insert into rating(`uid`, `mid`, `rating`) values ('4', '3', '3');
+insert into rating(`uid`, `mid`, `rating`) values ('6', '4', '4');
+insert into rating(`uid`, `mid`, `rating`) values ('7', '5', '5');
+insert into rating(`uid`, `mid`, `rating`) values ('8', '6', '4');
+insert into rating(`uid`, `mid`, `rating`) values ('9', '7', '3');
+insert into rating(`uid`, `mid`, `rating`) values ('1', '8', '4');
+insert into rating(`uid`, `mid`, `rating`) values ('3', '9', '5');
+insert into rating(`uid`, `mid`, `rating`) values ('4', '10', '4');
+
+
+
+insert into review(`uid`, `mid`, `review`) values ('9', '1', 'This movie was so great, it blew my mind. Now I feel like I dont even exist anymore lol.');
+insert into review(`uid`, `mid`, `review`) values ('8', '2', 'Talk about the kind of movie to get in a good mood about, It makes me want to go bowling really');
+insert into review(`uid`, `mid`, `review`) values ('7', '3', 'These special effects are amazing, and its super gross. Slime all over everything, sign me up!');
+insert into review(`uid`, `mid`, `review`) values ('6', '4', 'Anything with dinosaurs is a winner in my book. And Goldblum has a hell of a laugh on him.');
+insert into review(`uid`, `mid`, `review`) values ('4', '5', 'It doesnt get much more classic than this. An abandoned hotel, some ghosts, super powers, and a giant freaking axe to set the mood.');
+insert into review(`uid`, `mid`, `review`) values ('3', '6', 'I liked the music in this movie, but I dont think the movie its self lives up to the hype.');
+insert into review(`uid`, `mid`, `review`) values ('1', '7', 'Whats so mystic about it, someone explain this thing to me...:-/');
+insert into review(`uid`, `mid`, `review`) values ('9', '8', 'NOT AN ACCURATE PORTRAYAL OF PRISON. SERIOUSLY. But I could listen to Morgan Freeman talk for days.');
+insert into review(`uid`, `mid`, `review`) values ('8', '9', 'Wallstreet is just the best, Ill tell you what. All that 80s stuff, and money, shoowee sure makes me happy.');
+insert into review(`uid`, `mid`, `review`) values ('7', '10', 'Poor Marvin. :(');
