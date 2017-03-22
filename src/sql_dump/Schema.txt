@@ -11,7 +11,7 @@ producer(id: int(11), name: varchar(20))
 
 writer(id: int(11), name: varchar(20), dob: date)
 
-editor(id: int(11), name: varchar(20))
+editor(id: int(11), name: varchar(3	0))
 
 tags(mid: int(11), tag: varchar(20))
 
