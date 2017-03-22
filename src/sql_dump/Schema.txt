@@ -1,23 +1,22 @@
 Database Schema:
 
-Movies(id: int(11), title: varchar(20), genre: varchar(20), release: date, language: varchar(20), duration: int(11), summary: varchar(256), did: int(11), pid: int(11), swid: int(11), eid: int(11))
+movie(id: int(11), title: varchar(30), genre: varchar(20), release: varchar(255), language: varchar(20), duration: int(255), summary: varchar(1000), did: int(11), pid: int(11), swid: int(11), eid: int(11), rating: varchar(5))
+actor(id: int(11), name: varchar(20), dob: date)
 
-Actors(id: int(11), name: varchar(20), dob: date)
+acted_in(aid: int(11), mid: int(11), role: varchar(30))
 
-Acted_In(aid: int(11), mid: int(11), role: varchar(20))
+director(id: int(11), name: varchar(20), dob: date)
 
-Directors(id: int(11), name: varchar(20), dob: date)
+producer(id: int(11), name: varchar(20))
 
-Producers(id: int(11), name: varchar(20), dob: date)
+writer(id: int(11), name: varchar(20), dob: date)
 
-Screenwriters(id: int(11), name: varchar(20), dob: date)
+editor(id: int(11), name: varchar(20))
 
-Editors(id: int(11), name: varchar(20), dob: date)
+tags(mid: int(11), tag: varchar(20))
 
-Tags(mid: int(11), tag: varchar(20))
+user(id: int(20, firstname: varchar(20), middle: char(1), lastname: varchar(20), username: varchar(20), dob: date, gender: char(1), access: varchar(20))
 
-Users(id: int(20, firstname: varchar(20), middle: char(1), lastname: varchar(20), username: varchar(20), dob: date, gender: char(1), access: varchar(20))
+rating(uid: int(11), mid: int(11), rating: int(11))
 
-Ratings(uid: int(11), mid: int(11), rating: int(11))
-
-Reviews(uid: int(11), mid: int(11), review: varchar(256))
+review(uid: int(11), mid: int(11), review: varchar(256))
