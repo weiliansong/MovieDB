@@ -4,7 +4,7 @@ Movies(id: int(11), title: varchar(20), genre: varchar(20), release: date, langu
 
 Actors(id: int(11), name: varchar(20), dob: date)
 
-Roles(aid: int(11), mid: int(11), role: varchar(20))
+Acted_In(aid: int(11), mid: int(11), role: varchar(20))
 
 Directors(id: int(11), name: varchar(20), dob: date)
 
