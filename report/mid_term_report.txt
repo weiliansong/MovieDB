@@ -1,15 +1,15 @@
 Roles:
   1. Weilian Song
        - Django framework developer
-			 - Mid-term report content compiler
+       - Mid-term report content compiler
   2. Greg McIntosh
-			 - Backend developer
-			 - Responsible for database schema and mysql dump file
+       - Backend developer
+       - Responsible for database schema and mysql dump file
   3. Henry Uradu
-			 - Frontend developer
-			 - Unified Model Language diagram
+       - Frontend developer
+       - Unified Model Language diagram
   4. Nathaniel Serpico
-			 - Frontend developer
+       - Frontend developer
 
 Database Design:
 
