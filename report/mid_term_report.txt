@@ -75,7 +75,7 @@ Database Schema:
         pid: int(11), 
         swid: int(11), 
         eid: int(11),
-				PRIMARY_KEY(id),
+        PRIMARY_KEY(id),
         FOREIGN_KEY(did) REFERENCES director(id),
         FOREIGN_KEY(pid) REFERENCES producer(id),
         FOREIGN_KEY(swid) REFERENCES writer(id),
