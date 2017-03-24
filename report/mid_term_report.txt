@@ -10,6 +10,7 @@ Roles:
        - Unified Model Language diagram
   4. Nathaniel Serpico
        - Frontend developer
+       - ER diagram creator
 
 Database Design:
 
