@@ -31,7 +31,7 @@ body div {scroll-behavior: smooth}
 
 	}
 
-  .fixed-header-search{
+  .fixed-header-login{
     height:3.5rem;
     width:10%;
     float:right;
@@ -84,15 +84,17 @@ body div {scroll-behavior: smooth}
 
 
  	.featured-movies .featured-movies-row-one{
- 		height: 45%;
+ 		height: 45rem;
+ 		width: 170rem;
  		margin: 5rem;
  		margin-bottom: 1rem;
- 		background-color: white; 
+ 		background-color: black; 
  	}
  	.featured-movies .featured-movies-row-two{
- 		height: 45%;
+ 		height: 45rem;
+ 		width: 170rem;
  		margin: 1rem 5rem;
- 		background-color: white; 
+ 		background-color: black; 
  	}
  	.featured-movies div .row-item-one{
  		float:left;
@@ -100,6 +102,7 @@ body div {scroll-behavior: smooth}
  		height: 90%;
  		margin: 2rem;
  		border: 1px solid black;
+ 		background-color: white;
  	}
  	.featured-movies div .row-item-two{
  		float:left;
@@ -107,6 +110,8 @@ body div {scroll-behavior: smooth}
  		height: 90%;
  		margin: 2rem;
  		border: 1px solid black;
+ 		background-color: white;
+
 
  	}
  	.featured-movies div .row-item-three{
@@ -115,13 +120,15 @@ body div {scroll-behavior: smooth}
  		height: 90%;
  		margin: 2rem;
  		border: 1px solid black;
+ 		background-color: white;
+
  	}
 
  	.movie-img-container{
  		float:left;
  		margin:.25rem;
  		height: 60%;
- 		width: 30%;
+ 		width: 18rem;
 
  	}
  	.movie-img{
@@ -131,13 +138,17 @@ body div {scroll-behavior: smooth}
  		float:left;
  		margin:.25rem;
  		height: 60%;
- 		width: 65%;
+ 		width: 28rem;
  		font-size: 30px;
+ 	}
+ 	.movie-text-top span{
+ 		font-size: 2rem;
+ 		margin: .5rem;
  	}
  	.movie-text-bottom{
  		float:left;
  		margin:.25rem;
  		height: 35%;
- 		width: 96%;
+ 		width: 46rem;
  	}
 
