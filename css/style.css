@@ -79,7 +79,7 @@ body div {scroll-behavior: smooth}
     height:100%;
     position:relative;
 	background-clip:border-box;
-	background-color: black;
+	background-color:#F4F4F4;
   }
 
 
@@ -88,20 +88,19 @@ body div {scroll-behavior: smooth}
  		width: 170rem;
  		margin: 5rem;
  		margin-bottom: 1rem;
- 		background-color: black; 
+ 		background-color:#F4F4F4; 
  	}
  	.featured-movies .featured-movies-row-two{
  		height: 45rem;
  		width: 170rem;
  		margin: 1rem 5rem;
- 		background-color: black; 
+ 		background-color:#F4F4F4;
  	}
  	.featured-movies div .row-item-one{
  		float:left;
  		width: 30%;
  		height: 90%;
  		margin: 2rem;
- 		border: 1px solid black;
  		background-color: white;
  	}
  	.featured-movies div .row-item-two{
@@ -109,7 +108,6 @@ body div {scroll-behavior: smooth}
  		width: 30%;
  		height: 90%;
  		margin: 2rem;
- 		border: 1px solid black;
  		background-color: white;
 
 
@@ -119,7 +117,6 @@ body div {scroll-behavior: smooth}
  		width: 30%; 		
  		height: 90%;
  		margin: 2rem;
- 		border: 1px solid black;
  		background-color: white;
 
  	}

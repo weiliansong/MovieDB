@@ -68,9 +68,18 @@ function buildMovieCard(title, img, actors, year, genre, tags){
 
 	cardHTML += "</div>";
 
-	console.log(cardHTML);
+	return cardHTML;
 
 };
+
+
+function appendMovieCard(title, img, actors, year, genre, tags){
+	var cardHTML = buildMovieCard(title, img, actors, year, genre, tags);
+
+	 $('.movies-container').append(cardHTML);
+
+};
+
 
 </script>
 
