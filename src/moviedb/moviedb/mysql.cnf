@@ -1,6 +1,0 @@
-[client]
-database = moviedatabase
-host = localhost
-user = moviedb_user
-password = 123456789
-default-character-set = utf8

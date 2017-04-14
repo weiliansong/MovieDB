@@ -1,0 +1,88 @@
+{% load static %}
+
+<HTML>
+<title> MovieDB </title>
+<head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}"/>
+</head>
+<body>
+<div class="fixed-header">
+	<div class='fixed-header-title' onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/'"> MovieDB </div>
+	<div class="fixed-header-login" onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/login.html'"> Login/Register </div>
+	<div class="fixed-header-add" onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/add-movie.html'"> Add </div>
+	<div class="fixed-header-movies" onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/movies.html'"> Movies </div>
+   
+    
+</div>
+<div class="featured-movies">
+	<div class ="featured-movies-row-one">
+		<div class="row-item-one">
+			<div class="movie-img-container">
+				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+			</div>
+			<div class="movie-text-top">
+			</div>
+			<div class="movie-text-bottom">
+			</div>
+		</div>
+		<div class="row-item-two">
+			<div class="movie-img-container">
+				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+			</div>
+			<div class="movie-text-top">
+			</div>
+			<div class="movie-text-bottom">
+			</div>
+		</div>
+		<div class="row-item-three">
+			<div class="movie-img-container">
+				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+			</div>
+			<div class="movie-text-top">
+				<span> Title: Tortilla boy </span>
+				<br><br>
+				<span>  Year: 2k16 </span>
+				<br><br>
+				<span>  Director: Tortilla boy </span>
+				<br><br>
+				<span>  Actors: Tortilla boy </span>
+			</div>
+			<div class="movie-text-bottom">
+			</div>
+		</div>
+	</div>
+
+	<div class="featured-movies-row-two">
+		<div class="row-item-one">
+			<div class="movie-img-container">
+				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+			</div>
+			<div class="movie-text-top">
+			</div>
+			<div class="movie-text-bottom">
+			</div>
+		</div>
+		<div class="row-item-two">
+			<div class="movie-img-container">
+				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+			</div>
+			<div class="movie-text-top">
+			</div>
+			<div class="movie-text-bottom">
+			</div>
+		</div>
+		<div class="row-item-three">
+			<div class="movie-img-container">
+				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+			</div>
+			<div class="movie-text-top">
+			</div>
+			<div class="movie-text-bottom">
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</HTML>
