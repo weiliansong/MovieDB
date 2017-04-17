@@ -9,10 +9,10 @@
 </head>
 <body>
 <div class="fixed-header">
-	<div class='fixed-header-title' onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/'"> MovieDB </div>
-	<div class="fixed-header-login" onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/login.html'"> Login/Register </div>
-	<div class="fixed-header-add" onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/add-movie.html'"> Add </div>
-	<div class="fixed-header-movies" onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/movies.html'"> Movies </div>
+	<div class='fixed-header-title' onclick="location.href=''"> MovieDB </div>
+	<div class="fixed-header-login" onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
+	<div class="fixed-header-add" onclick="location.href=''"> Add </div>
+	<div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
    
     
 </div>
@@ -20,7 +20,7 @@
 	<div class ="featured-movies-row-one">
 		<div class="row-item-one">
 			<div class="movie-img-container">
-				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+				<img class="movie-img" src="{% static 'home/tortilla.jpg' %}"></img>
 			</div>
 			<div class="movie-text-top">
 			</div>
@@ -29,7 +29,7 @@
 		</div>
 		<div class="row-item-two">
 			<div class="movie-img-container">
-				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+				<img class="movie-img" src="{% static 'home/tortilla.jpg' %}"></img>
 			</div>
 			<div class="movie-text-top">
 			</div>
@@ -38,7 +38,7 @@
 		</div>
 		<div class="row-item-three">
 			<div class="movie-img-container">
-				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+				<img class="movie-img" src="{% static 'home/tortilla.jpg' %}"></img>
 			</div>
 			<div class="movie-text-top">
 				<span> Title: Tortilla boy </span>
@@ -57,7 +57,7 @@
 	<div class="featured-movies-row-two">
 		<div class="row-item-one">
 			<div class="movie-img-container">
-				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+				<img class="movie-img" src="{% static 'home/tortilla.jpg' %}"></img>
 			</div>
 			<div class="movie-text-top">
 			</div>
@@ -66,7 +66,7 @@
 		</div>
 		<div class="row-item-two">
 			<div class="movie-img-container">
-				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+				<img class="movie-img" src="{% static 'home/tortilla.jpg' %}"></img>
 			</div>
 			<div class="movie-text-top">
 			</div>
@@ -75,7 +75,7 @@
 		</div>
 		<div class="row-item-three">
 			<div class="movie-img-container">
-				<img class="movie-img" src="{% static 'tortilla.jpg' %}"></img>
+				<img class="movie-img" src="{% static 'home/tortilla.jpg' %}"></img>
 			</div>
 			<div class="movie-text-top">
 			</div>
