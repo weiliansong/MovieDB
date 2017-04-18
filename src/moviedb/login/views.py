@@ -21,8 +21,6 @@ def log_in(request):
     for q in queries:
       if q_username in q:
         return HttpResponseRedirect(reverse('home:index'))
-      else:
-        print('Not found')
 
 def register(request):
     print(request.POST['username'])

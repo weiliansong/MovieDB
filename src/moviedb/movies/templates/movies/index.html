@@ -1,89 +1,89 @@
 {% load static %}
 
 <HTML>
-	<title> MovieDB </title>
-	<head>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <title> MovieDB </title>
+  <head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
-	</head>
-	<body>
-		<div class="fixed-header">
-			<div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
-			<div class="fixed-header-login" onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
-			<div class="fixed-header-add" onclick="location.href=''"> Add </div>
-			<div class="fixed-header-movies" onclick="location.href=''"> Movies </div>
-		</div>
-
-
-		<div class="fixed-sidebar">
-
-			<div class="filters"> <h3>Filters</h3>
-				<form class="actors"> Actors <br>
-					<input type="radio" name="actor" value="a"> aaa <br>
-					<input type="radio" name="actor" value="b"> bbb <br>
-					<input type="radio" name="actor" value="c"> ccc <br>
-				</form>
-			</div>
-			<div class="filters">
-				<form class="genres"> Genres <br>
-					<input type="radio" name="genre" value="a"> aaa <br>
-					<input type="radio" name="genre" value="b"> bbb <br>
-					<input type="radio" name="genre" value="c"> ccc <br>
-				</form>
-			</div>
-			<div class="filters"> 
-				<form class="directors"> Directors <br>
-					<input type="radio" name="director" value="a"> aaa <br>
-					<input type="radio" name="director" value="b"> bbb <br>
-					<input type="radio" name="director" value="c"> ccc <br>
-				</form>
-			</div>
-
-		</div>
-
-		<div class='movies-container'>
-
-    
-
-		</div>
-
-		<script>
-
-    function buildMovieCard(title, img, actors, year, genre, tags){
-    	var cardHTML = "<div class='movie-card'>";
-    
-    	cardHTML += "<div class='movie-img-container'>";
-    	cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
-    	cardHTML += "</div>";
-    
-    	cardHTML += "<div class='movie-text-top'>";
-    	cardHTML += "<span> Title: " + title + "</span><br>";
-    	cardHTML += "<span> Year: " + year + "</span><br>";
-    	cardHTML += "<span> Actors: " + actors + "</span><br>";
-    	cardHTML += "</div>";
-    
-    	cardHTML += "<div class='movie-text-bottom'>";
-    	cardHTML += "<span> Tags: " + tags + "</span><br>";
-    	cardHTML += "<span> Genre(s): " + genre + "</span><br>";
-    	cardHTML += "</div>";
-    
-    	cardHTML += "</div>";
-    
-    	return cardHTML;
-    
-    };
-    
-    
-    function appendMovieCard(title, img, actors, year, genre, tags){
-    	var cardHTML = buildMovieCard(title, img, actors, year, genre, tags);
-    
-    	$('.movies-container').append(cardHTML);
-    
-    };
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+  </head>
+  <body>
+    <div class="fixed-header">
+      <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
+      <div class="fixed-header-add" onclick="location.href=''"> Add </div>
+      <div class="fixed-header-movies" onclick="location.href=''"> Movies </div>
+    </div>
 
 
-		</script>
+    <div class="fixed-sidebar">
+
+      <div class="filters"> <h3>Filters</h3>
+        <form class="actors"> Actors <br>
+          <input type="radio" name="actor" value="a"> aaa <br>
+          <input type="radio" name="actor" value="b"> bbb <br>
+          <input type="radio" name="actor" value="c"> ccc <br>
+        </form>
+      </div>
+      <div class="filters">
+        <form class="genres"> Genres <br>
+          <input type="radio" name="genre" value="a"> aaa <br>
+          <input type="radio" name="genre" value="b"> bbb <br>
+          <input type="radio" name="genre" value="c"> ccc <br>
+        </form>
+      </div>
+      <div class="filters"> 
+        <form class="directors"> Directors <br>
+          <input type="radio" name="director" value="a"> aaa <br>
+          <input type="radio" name="director" value="b"> bbb <br>
+          <input type="radio" name="director" value="c"> ccc <br>
+        </form>
+      </div>
+
+    </div>
+
+    <div class='movies-container'>
+
+    </div>
+
+    <script>
+
+function buildMovieCard(title, img, actors, year, genre, tags){
+  var cardHTML = "<div class='movie-card'>";
+
+  cardHTML += "<div class='movie-img-container'>";
+  cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
+  cardHTML += "</div>";
+
+  cardHTML += "<div class='movie-text-top'>";
+  cardHTML += "<span> Title: " + title + "</span><br>";
+  cardHTML += "<span> Year: " + year + "</span><br>";
+  cardHTML += "<span> Actors: " + actors + "</span><br>";
+  cardHTML += "</div>";
+
+  cardHTML += "<div class='movie-text-bottom'>";
+  cardHTML += "<span> Tags: " + tags + "</span><br>";
+  cardHTML += "<span> Genre(s): " + genre + "</span><br>";
+  cardHTML += "</div>";
+
+  cardHTML += "</div>";
+
+  return cardHTML;
+
+};
+
+
+function appendMovieCard(title, img, actors, year, genre, tags){
+  var cardHTML = buildMovieCard(title, img, actors, year, genre, tags);
+
+  $('.movies-container').append(cardHTML);
+
+};
+
+appendMovieCard("haha", "", "haha", 2017, "haha", "haha)
+
+
+    </script>
 
 
 
