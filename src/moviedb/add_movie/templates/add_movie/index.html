@@ -1,0 +1,40 @@
+{% load static %}
+<HTML>
+  <title> MovieDB </title>
+  <head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'add-movie-style.css' %}"/>
+  </head>
+  <body>
+    <div class="fixed-header">
+      <div class='fixed-header-title'  onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
+      <div class="fixed-header-login"  onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
+      <div class="fixed-header-add"    onclick="location.href='{% url 'add_movie:index' %}'"> Add </div>
+      <div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
+    </div>
+
+
+    <form class="add-movie"> <h3> Add a film </h3>
+      <span> Title </span><br>
+      <input type="text" name="title">
+      <br>
+      <span> Year </span><br>
+      <input type="text" name="year">
+      <br>
+      <span> Film Crew </span><br>
+      <input type="text" name="film crew">
+      <br>
+      <span> Tags </span><br>
+      <input type="text" name="tags">
+      <br>
+      <span> Image URL</span><br>
+      <input type="text" name="image">
+      <br>
+      <br>
+      <br>
+      <input type="submit" name="submit" value="Add Film"> 
+      <br>
+    </form>
+  </body>
+</HTML>

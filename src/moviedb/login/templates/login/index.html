@@ -5,13 +5,13 @@
   <head>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'login-style.css' %}"/>
   </head>
   <body>
     <div class="fixed-header">
-      <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
-      <div class="fixed-header-login" onclick="location.href=''"> Login/Register </div>
-      <div class="fixed-header-add" onclick="location.href=''"> Add </div>
+      <div class='fixed-header-title'  onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
+      <div class="fixed-header-login"  onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
+      <div class="fixed-header-add"    onclick="location.href='{% url 'add_movie:index' %}'"> Add </div>
       <div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
     </div>
 
@@ -25,11 +25,11 @@
       Manager:  <input type="password" name="manager"> </input> <br>
       <br>
       <input type='submit' value='Login'></input>
-    </form>
 
-    {% if auth_message %}
-    <p><strong> {{ auth_message }} </strong></p>
-    {% endif %}
+      {% if auth_message %} 
+        <p><strong> {{ auth_message }} </strong></p>
+      {% endif %}
+    </form>
 
     <form class='register-form' action="{% url 'login:register' %}" method="post"> 
       {% csrf_token %}
@@ -41,11 +41,11 @@
       Confirm:  <input type="password" name="password-confirm"> </input> <br>
       <br>
       <input type='submit' value='Register'></input>
-    </form>
 
-    {% if register_message %}
-    <p><strong> {{ register_message }} </strong></p>
-    {% endif %}
+      {% if register_message %} 
+        <p><strong> {{ register_message }} </strong></p>
+      {% endif %}
+    </form>
 
 
   </body>

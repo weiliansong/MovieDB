@@ -5,14 +5,14 @@
   <head>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'movies-style.css' %}"/>
   </head>
   <body>
     <div class="fixed-header">
-      <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
-      <div class="fixed-header-login" onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
-      <div class="fixed-header-add" onclick="location.href=''"> Add </div>
-      <div class="fixed-header-movies" onclick="location.href=''"> Movies </div>
+      <div class='fixed-header-title'  onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
+      <div class="fixed-header-login"  onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
+      <div class="fixed-header-add"    onclick="location.href='{% url 'add_movie:index' %}'"> Add </div>
+      <div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
     </div>
 
 
@@ -43,6 +43,8 @@
     </div>
 
     <div class='movies-container'>
+
+
 
     </div>
 
@@ -80,11 +82,17 @@ function appendMovieCard(title, img, actors, year, genre, tags){
 
 };
 
-appendMovieCard("haha", "{% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha"); 
-appendMovieCard("haha", "{% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha"); 
-appendMovieCard("haha", "{% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha"); 
+appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
+appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
+appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
+appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
+appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
+appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
+
 
     </script>
 
   </body>
 </HTML>
+
+
