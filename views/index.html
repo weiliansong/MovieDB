@@ -15,72 +15,45 @@
     
 </div>
 <div class="featured-movies">
-	<div class ="featured-movies-row-one">
-		<div class="row-item-one">
-			<div class="movie-img-container">
-				<img class="movie-img" src="../css/tortilla.jpg"></img>
-			</div>
-			<div class="movie-text-top">
-			</div>
-			<div class="movie-text-bottom">
-			</div>
-		</div>
-		<div class="row-item-two">
-			<div class="movie-img-container">
-				<img class="movie-img" src="../css/tortilla.jpg"></img>
-			</div>
-			<div class="movie-text-top">
-			</div>
-			<div class="movie-text-bottom">
-			</div>
-		</div>
-		<div class="row-item-three">
-			<div class="movie-img-container">
-				<img class="movie-img" src="../css/tortilla.jpg"></img>
-			</div>
-			<div class="movie-text-top">
-				<span> Title: Tortilla boy </span>
-				<br><br>
-				<span>  Year: 2k16 </span>
-				<br><br>
-				<span>  Director: Tortilla boy </span>
-				<br><br>
-				<span>  Actors: Tortilla boy </span>
-			</div>
-			<div class="movie-text-bottom">
-			</div>
-		</div>
-	</div>
-
-	<div class="featured-movies-row-two">
-		<div class="row-item-one">
-			<div class="movie-img-container">
-				<img class="movie-img" src="../css/tortilla.jpg"></img>
-			</div>
-			<div class="movie-text-top">
-			</div>
-			<div class="movie-text-bottom">
-			</div>
-		</div>
-		<div class="row-item-two">
-			<div class="movie-img-container">
-				<img class="movie-img" src="../css/tortilla.jpg"></img>
-			</div>
-			<div class="movie-text-top">
-			</div>
-			<div class="movie-text-bottom">
-			</div>
-		</div>
-		<div class="row-item-three">
-			<div class="movie-img-container">
-				<img class="movie-img" src="../css/tortilla.jpg"></img>
-			</div>
-			<div class="movie-text-top">
-			</div>
-			<div class="movie-text-bottom">
-			</div>
-		</div>
-	</div>
+	
 </div>
+	
+<script>
+
+function buildMovieCard(title, img, actors, year, genre, tags){
+	var cardHTML = "<div class='movie-card'>";
+
+	cardHTML += "<div class='movie-img-container'>";
+	cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
+	cardHTML += "</div>";
+
+	cardHTML += "<div class='movie-text-top'>";
+	cardHTML += "<span> Title: " + title + "</span><br>";
+	cardHTML += "<span> Year: " + year + "</span><br>";
+	cardHTML += "<span> Actors: " + actors + "</span><br>";
+	cardHTML += "</div>";
+
+	cardHTML += "<div class='movie-text-bottom'>";
+	cardHTML += "<span> Tags: " + tags + "</span><br>";
+	cardHTML += "<span> Genre(s): " + genre + "</span><br>";
+	cardHTML += "</div>";
+
+	cardHTML += "</div>";
+
+	return cardHTML;
+
+};
+
+
+function appendMovieCard(title, img, actors, year, genre, tags){
+	var cardHTML = buildMovieCard(title, img, actors, year, genre, tags);
+
+	 $('.featured-movies').append(cardHTML);
+
+};
+
+
+</script>
+
 </body>
 </HTML>
