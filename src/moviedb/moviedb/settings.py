@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'moviedatabase',
         'USER': 'moviedb_user',
-        'PASSWORD': '123456789',
+        'PASSWORD': 'moviedb_user',
     }
 }
 
