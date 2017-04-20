@@ -15,25 +15,41 @@
 
 <div class='movie-div'>
 
-	<form class="add-movie"> <h3> Add a film </h3>
+	<form class="add-movie"> <h3> Manage Films </h3>
 		<span> Title </span><br>
 		<input type="text" name="title">
 		<br>
-		<span> Year </span><br>
+		<span> Release Date </span><br>
 		<input type="text" name="year">
 		<br>
 		<span> Film Crew </span><br>
 		<input type="text" class="filmcrew" name="filmcrew" placeholder="name, role | name, role | ....">
 		<br>
+		<span> Duration </span><br>
+		<input type="text" name="duration">
+		<br>
+		<span> Language </span><br>
+		<input type="text" name="language">
+		<br>
 		<span> Tags </span><br>
 		<input type="text" name="tags">
+		<br>
+		<span> Description </span><br>
+		<input type="text" name="description">
 		<br>
 		<span> Image URL</span><br>
 		<input type="text" name="image">
 		<br>
 		<br>
+		<select name='action'>
+			<option value="add"> Add Film</option>
+			<option value ='remove'> Remove Film</option>
+			<option value='update'> Update Film</option>
+		</select>
 		<br>
-		<input type="submit" name="submit" value="Add Film"> 
+		<br>
+		<br>
+		<input type="submit" name="submit" value="Submit!"> 
 		<br>
 		
 
