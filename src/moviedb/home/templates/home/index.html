@@ -46,7 +46,6 @@ function buildMovieCard(title, img, actors, year, genre, tags){
 
 };
 
-
 function appendMovieCard(title, img, actors, year, genre, tags){
   var cardHTML = buildMovieCard(title, img, actors, year, genre, tags);
 
@@ -54,9 +53,9 @@ function appendMovieCard(title, img, actors, year, genre, tags){
 
 };
 
-appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
-appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
-appendMovieCard("haha", " {% static 'tortilla.jpg' %}", "haha", 2017, "haha", "haha");
+{% for movie in movies %}
+appendMovieCard("{{ movie.title }}", "{% static 'tortilla.jpg' %}", "haha", {{ movie.release }}, "{{ movie.genre }}", "ha");
+{% endfor %}
 
     </script>
   </body>

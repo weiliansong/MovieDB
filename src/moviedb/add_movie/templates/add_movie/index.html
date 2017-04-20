@@ -15,23 +15,34 @@
     </div>
 
 
-    <form class="add-movie"> <h3> Add a film </h3>
+    <form class="add-movie" action="{% url 'add_movie:add_movie' %}" method="post"><h3> Add a film </h3>
+      {% csrf_token %}
       <span> Title </span><br>
       <input type="text" name="title">
       <br>
       <span> Year </span><br>
-      <input type="text" name="year">
+      <input type="number" name="release">
+      <br>
+      <span> Genre(s) </span><br>
+      <input type="text" name="genre">
+      <br>
+      <span> Language </span><br>
+      <input type="text" name="language">
+      <br>
+      <span> Duration </span><br>
+      <input type="number" name="duration">
       <br>
       <span> Film Crew </span><br>
       <input type="text" name="film crew">
       <br>
-      <span> Tags </span><br>
+      <span> Tag(s) </span><br>
       <input type="text" name="tags">
       <br>
       <span> Image URL</span><br>
-      <input type="text" name="image">
+      <input type="text" name="img_url">
       <br>
-      <br>
+      <span> Summary </span><br>
+      <input type="text" name="summary">
       <br>
       <input type="submit" name="submit" value="Add Film"> 
       <br>

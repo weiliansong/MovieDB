@@ -6,46 +6,39 @@ from django.urls import reverse
 from database.models import User
 
 def index(request):
-    return render(request, 'login/index.html')
+  return render(request, 'login/index.html')
 
 # Checks if username and password are both correct
 def auth(request):
-    q_username = request.POST['username']
-    q_password = request.POST['password']
+  q_username = request.POST['username']
+  q_password = request.POST['password']
 
-    db = MySQLdb.connect(host='localhost',
-                         user='moviedb_user',
-                         passwd='moviedb_user',
-                         db='moviedatabase')
-    cur = db.cursor()
-    cur.execute('select username from user')
-    queries = cur.fetchall()
+  user = User.objects.all().filter(username=q_username)
 
-    for q in queries:
-      if q_username in q:
-        return HttpResponseRedirect(reverse('home:index'))
-
+  if user:
+    if user.password == q_password:
+      return HttpResponseRedirect(reverse('home:index'))
+    else:
+      return render(request, 'login/index.html', {
+          'auth_message': 'Wrong login',
+      })
+  else:
     return render(request, 'login/index.html', {
-        'auth_message': 'Wrong login',
+        'auth_message': 'Unknown user',
     })
+
+
 
 # Checks to make sure the user is not registered already
 def register(request):
-    q_username = request.POST['username']
-    q_password = request.POST['password']
+  q_username = request.POST['username']
+  q_password = request.POST['password']
 
-    db = MySQLdb.connect(host='localhost',
-                         user='moviedb_user',
-                         passwd='moviedb_user',
-                         db='moviedatabase')
-    cur = db.cursor()
-    cur.execute('select username from user')
-    queries = cur.fetchall()
+  user = User.objects.all().filter(username=q_username)
 
-    for q in queries:
-      if q_username in q:
-        return render(request, 'login/index.html', {
-            'register_message': 'Existing user',
+  if user:
+    return render(request, 'login/index.html', {
+        'register_message': 'Existing user',
     })
 
-    return HttpResponseRedirect(reverse('home:index'))
+  new_user = User(

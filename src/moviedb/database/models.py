@@ -6,7 +6,7 @@ class Movie(models.Model):
   genre = models.CharField(max_length=20)
   release = models.IntegerField('year released')
   language = models.CharField(max_length=20)
-  duration = models.DurationField()
+  duration = models.IntegerField()
   summary = models.CharField(max_length=256)
 
 class User(models.Model):
@@ -22,22 +22,23 @@ class User(models.Model):
   dob = models.DateField('date released')
   gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
   is_admin = models.BooleanField(default=False)
+  password = models.CharField(max_length=20, default='')
 
 class Crew(models.Model):
-  mid = models.ForeignKey(Movie)
+  mid = models.IntegerField(Movie)
   name = models.CharField(max_length=30)
   role = models.CharField(max_length=30)
 
 class Rating(models.Model):
-  uid = models.ForeignKey(User)
-  mid = models.ForeignKey(Movie)
-  rating = models.IntegerField(max_value=5, min_value=0)
+  uid = models.IntegerField(User)
+  mid = models.IntegerField(Movie)
+  rating = models.IntegerField()
 
 class Review(models.Model):
-  uid = models.ForeignKey(User)
-  mid = models.ForeignKey(Movie)
+  uid = models.IntegerField(User)
+  mid = models.IntegerField(Movie)
   review = models.CharField(max_length=256)
 
 class Tags(models.Model):
-  mid = models.ForeignKey(Movie)
+  mid = models.IntegerField()
   tags = models.CharField(max_length=20)
