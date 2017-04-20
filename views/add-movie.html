@@ -13,45 +13,46 @@
 	<div class="fixed-header-movies" onclick="location.href='http://cs.uky.edu/~njse226/moviedb/views/movies.html'"> Movies </div>
 </div>
 
+<div class='movie-div'>
 
-<form class="add-movie"> <h3> Add a film </h3>
-	<span> Title </span><br>
-	<input type="text" name="title">
-	<br>
-	<span> Year </span><br>
-	<input type="text" name="year">
-	<br>
-	<span> Film Crew </span><br>
-	<input type="text" class="filmcrew" name="filmcrew" placeholder="name, role | name, role | ....">
-	<br>
-	<span> Tags </span><br>
-	<input type="text" name="tags">
-	<br>
-	<span> Image URL</span><br>
-	<input type="text" name="image">
-	<br>
-	<br>
-	<br>
-	<input type="submit" name="submit" value="Add Film"> 
-	<br>
-	
+	<form class="add-movie"> <h3> Add a film </h3>
+		<span> Title </span><br>
+		<input type="text" name="title">
+		<br>
+		<span> Year </span><br>
+		<input type="text" name="year">
+		<br>
+		<span> Film Crew </span><br>
+		<input type="text" class="filmcrew" name="filmcrew" placeholder="name, role | name, role | ....">
+		<br>
+		<span> Tags </span><br>
+		<input type="text" name="tags">
+		<br>
+		<span> Image URL</span><br>
+		<input type="text" name="image">
+		<br>
+		<br>
+		<br>
+		<input type="submit" name="submit" value="Add Film"> 
+		<br>
+		
 
 
-</form>
+	</form>
 
-<div class="add-role">
-<span> Name </span><br>
-<input type='text' class='crew-name'>
-<br>
-<span> Role </span><br>
-<input type='text' class='crew-role'>
-<br>
-<br>
-<br>
-<button class="submit-role" onclick="appendCrewRole()"> Add Role </button>
+	<div class="add-role">
+		<span> Name </span><br>
+		<input type='text' class='crew-name'>
+		<br>
+		<span> Role </span><br>
+		<input type='text' class='crew-role'>
+		<br>
+		<br>
+		<br>
+		<button class="submit-role" onclick="appendCrewRole()"> Add Role </button>
 
+	</div>
 </div>
-
 
 <script>
 
