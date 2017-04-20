@@ -3,6 +3,5 @@ from django.http import HttpResponse
 from django.template import loader
 
 def index(request):
-  # Display who is logged in here
 	context = {}
-	return render(request, 'home/index.html', context)
+	return render(request, 'add_movie/index.html', context)

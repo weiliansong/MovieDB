@@ -5,7 +5,11 @@ html {
 body{
   background-color:#F4F4F4;
 	margin:0rem;
-  overflow: hidden;
+ 
+}
+
+*{
+	font-family:arial; 
 }
 body div {scroll-behavior: smooth}
 .fixed-header {
@@ -71,31 +75,16 @@ body div {scroll-behavior: smooth}
   }
 
 
- .login-form {
- 	float: left;
- 	height: 20rem;
- 	width: 50rem;
- 	margin: 10% 10% 10% 10%;
- 	position: absolute;
- 	font-size: 2rem;
- }
+.add-movie{
+	margin: 15% 40%;
 
- .login-form input{
- 	height: 2.5rem;
- 	font-size: 1.75rem;
+}
 
- }
+.add-movie span{
+	font-size: 2rem;
+}
 
- .register-form {
- 	float: right;
- 	height: 20rem;
- 	width: 50rem;
- 	margin: 10% 10% 10% 10%;
- 	font-size: 2rem;
- }
 
- .register-form input{
- 	height: 2.5rem;
- 	font-size: 1.75rem;
-
- }
+.add-movie h3{
+	font-size: 3rem;
+}

@@ -71,31 +71,54 @@ body div {scroll-behavior: smooth}
   }
 
 
- .login-form {
- 	float: left;
- 	height: 20rem;
- 	width: 50rem;
- 	margin: 10% 10% 10% 10%;
- 	position: absolute;
- 	font-size: 2rem;
- }
 
- .login-form input{
- 	height: 2.5rem;
- 	font-size: 1.75rem;
 
- }
 
- .register-form {
- 	float: right;
- 	height: 20rem;
- 	width: 50rem;
- 	margin: 10% 10% 10% 10%;
- 	font-size: 2rem;
- }
+.featured-movies{
 
- .register-form input{
- 	height: 2.5rem;
- 	font-size: 1.75rem;
+	width: 170rem;
+	margin: 7.5rem 5rem 1rem 12rem;
 
- }
+	background-color: black; 
+
+}
+.movie-card{
+	width: 50rem;
+	height: 40rem;
+	float: left;
+	margin: 2rem;
+	background-color: white;
+}
+
+.movie-img-container{
+		float:left;
+		margin:.25rem;
+		height: 60%;
+		width: 18rem;
+
+	}
+.movie-img{
+	height:100%;
+}
+.movie-text-top{
+	float:left;
+	margin:.25rem;
+	height: 60%;
+	width: 28rem;
+	font-size: 30px;
+}
+.movie-text-top span{
+	font-size: 2rem;
+	margin: .5rem;
+}
+.movie-text-bottom{
+	float:left;
+	margin:.25rem;
+	height: 14rem;
+	width: 46rem;
+}
+
+.movie-text-bottom span{
+	font-size: 2rem;
+	margin: .5rem;
+}
