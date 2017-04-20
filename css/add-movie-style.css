@@ -75,7 +75,8 @@ body div {scroll-behavior: smooth}
   }
 
 .movie-div{
-    margin: 15% 40;
+
+    margin: 15% 50rem;
     width: 100rem;
 }
 .add-movie{
@@ -91,7 +92,9 @@ margin: 0 0 15% 5rem;
 
 
 .add-movie h3{
+	margin-left:15rem;
 	font-size: 3rem;
+	width: 100rem;
 }
 
 .add-role{
