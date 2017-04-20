@@ -22,7 +22,7 @@
 	<input type="text" name="year">
 	<br>
 	<span> Film Crew </span><br>
-	<input type="text" name="film crew">
+	<input type="text" class="filmcrew" name="filmcrew" placeholder="name, role | name, role | ....">
 	<br>
 	<span> Tags </span><br>
 	<input type="text" name="tags">
@@ -35,12 +35,42 @@
 	<input type="submit" name="submit" value="Add Film"> 
 	<br>
 	
-	
-	
 
 
 </form>
 
+<div class="add-role">
+<span> Name </span><br>
+<input type='text' class='crew-name'>
+<br>
+<span> Role </span><br>
+<input type='text' class='crew-role'>
+<br>
+<br>
+<br>
+<button class="submit-role" onclick="appendCrewRole()"> Add Role </button>
 
+</div>
+
+
+<script>
+
+function appendCrewRole(){
+	var crewname = $('.crew-name');
+	var crewrole = $('.crew-role');
+	if(crewname.val() == "" || crewrole.val() == "")
+		return;
+	var textfield = $('.filmcrew');
+	var input = "";
+	input += crewname.val() + ", ";
+
+	input += $('.crew-role').val() + " | ";
+
+	crewname.val("");
+	crewrole.val("");
+	textfield.val(textfield.val() + input);
+
+}
+</script>
 </body>
 </HTML>
