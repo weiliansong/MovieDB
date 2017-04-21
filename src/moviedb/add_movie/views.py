@@ -24,7 +24,7 @@ def index(request):
   current_user = User.objects.all().filter(username=current_user)[0]
 
   context = {
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
   }
 
@@ -40,7 +40,7 @@ def upgrade_user(request):
   user = User.objects.all().filter(username=upgrade_username)
   if not user:
     context = {
-      'username' : current_user.username,
+      'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
       'is_admin' : current_user.is_admin,
       'message' : '%s not found!' % upgrade_username,
     }
@@ -52,7 +52,7 @@ def upgrade_user(request):
   user.save()
 
   context = {
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
     'message' : '%s upgraded to manager!' % upgrade_username,
   }
@@ -88,7 +88,7 @@ def add_movie(request):
 
   if Movie.objects.all().filter(title=title):
     context = {
-      'username' : current_user.username,
+      'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
       'is_admin' : current_user.is_admin,
       'message' : '%s Added Already!' % title,
     }
@@ -112,7 +112,11 @@ def add_movie(request):
     obj.save()
 
   for pair in film_crew:
-    name, role = [x.strip() for x in pair.split(',')]
+    tokens = [x.strip() for x in pair.split(',')]
+    
+    if len(tokens) != 2: continue 
+
+    name, role = tokens
     obj = Crew(mid=mid, name=name, role=role.lower())
     obj.save()
 
@@ -121,7 +125,7 @@ def add_movie(request):
   current_user = User.objects.all().filter(username=current_user)[0]
 
   context = {
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
     'message' : '%s Added!' % title,
   }
@@ -135,7 +139,7 @@ def remove_movie(request):
 
   if not movie:
     context = {
-      'username' : current_user.username,
+      'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
       'is_admin' : current_user.is_admin,
       'message' : 'Movie not found to delete',
     }
@@ -167,7 +171,7 @@ def remove_movie(request):
   current_user = User.objects.all().filter(username=current_user)[0]
 
   context = {
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
     'message' : '%s removed!' % title,
   }
@@ -193,7 +197,7 @@ def update_movie(request):
 
   if not movie:
     context = {
-      'username' : current_user.username,
+      'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
       'is_admin' : current_user.is_admin,
       'message' : 'Movie not found to update',
     }
@@ -250,12 +254,16 @@ def update_movie(request):
     delete_all(old_crew)
     for pair in film_crew:
       if pair:
-        name, role = [x.strip() for x in pair.split(',')]
+        tokens = [x.strip() for x in pair.split(',')]
+        
+        if len(tokens) != 2: continue 
+
+        name, role = tokens
         obj = Crew(mid=mid, name=name, role=role.lower())
         obj.save()
 
   context = {
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
     'message' : '%s updated' % title,
   }

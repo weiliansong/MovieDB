@@ -53,7 +53,7 @@ def index(request):
 
   context = {
     'movies' : container,
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
   }
 

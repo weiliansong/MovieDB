@@ -50,7 +50,7 @@ def index(request):
 
   context = {
     'movies' : container,
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
   }
 
@@ -110,7 +110,7 @@ def filters(request):
 
   context = {
     'movies' : container,
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
   }
 
@@ -167,7 +167,7 @@ def detail(request, mid):
     'mid' : movie.mid,
     'movie_info' : movie_info,
     'review_info' : review_info,
-    'username' : current_user.username,
+    'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
   }
 

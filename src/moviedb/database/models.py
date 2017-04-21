@@ -14,7 +14,7 @@ class User(models.Model):
   last_name = models.CharField(max_length=30)
   username = models.CharField(max_length=30)
   dob = models.CharField(max_length=10)
-  gender = models.CharField(max_length=5)
+  gender = models.CharField(max_length=10)
   is_admin = models.BooleanField(default=False)
   password = models.CharField(max_length=30)
 
