@@ -44,3 +44,7 @@ class Genres(models.Model):
 
 class Status(models.Model):
   logged_username = models.CharField(max_length=30, default='')
+
+class Favorites(models.Model):
+  uid = models.IntegerField()
+  mid = models.IntegerField()

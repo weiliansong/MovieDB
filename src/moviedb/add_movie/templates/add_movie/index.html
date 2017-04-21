@@ -11,7 +11,7 @@
     <div class="fixed-header">
       <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
       <div class="fixed-header-login" onclick="location.href='{% url 'login:logout' %}'"> Logout </div>
-      <div class="fixed-header-login"> {{ username }} </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'favorites:index' %}'"> {{ username }} </div>
 
       {% if is_admin %}
         <div class="fixed-header-add" onclick="location.href='{% url 'add_movie:index' %}'"> Manage </div>

@@ -11,7 +11,7 @@
     <div class="fixed-header">
       <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
       <div class="fixed-header-login" onclick="location.href='{% url 'login:logout' %}'"> Logout </div>
-      <div class="fixed-header-login"> {{ username }} </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'favorites:index' %}'"> {{ username }} </div>
 
       {% if is_admin %}
         <div class="fixed-header-add" onclick="location.href='{% url 'add_movie:index' %}'"> Manage </div>
@@ -50,7 +50,13 @@ function buildMovieCard(title, img, actors, year, genre, duration, language, tag
   var cardHTML = "<div class='movie-card'>";
 
   cardHTML += "<div class='movie-img-container'>";
-  cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
+  if(img != '') {
+    cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
+  }
+  else {
+    var tortilla = "{% static 'tortilla.jpg'%}"
+    cardHTML +=	"<img class='movie-img' src='" + tortilla +"'></img>";
+  }
   cardHTML += "</div>";
 
   cardHTML += "<div class='movie-text-top'>";
@@ -68,6 +74,8 @@ function buildMovieCard(title, img, actors, year, genre, duration, language, tag
 
   cardHTML += "<span> Description: " + description + "</span><br>";
 
+  cardHTML += "<a href={% url 'movies:add_favorite' mid %}>" + "<span>Add to favorites</span>" + "</a><br>";
+
   cardHTML += "</div>";
 
   cardHTML += "</div>";
@@ -77,7 +85,7 @@ function buildMovieCard(title, img, actors, year, genre, duration, language, tag
 };
 
 
-function appendMovieCard(img, title, actors, year, genre, duration, language, tags, description, avgRating){
+function appendMovieCard(title, actors, year, genre, duration, language, tags, description, avgRating, img){
   var cardHTML = buildMovieCard(title, img, actors, year, genre, duration, language, tags, description, avgRating);
 
   $('.movie-container').append(cardHTML);
@@ -103,7 +111,7 @@ function appendReviewCard(username, rating, review){
 }
 
 var movie = {{ movie_info | safe }};
-appendMovieCard("{% static 'tortilla.jpg' %}", movie[0], movie[1], movie[2], movie[3], movie[4], movie[5], movie[6], movie[7], movie[8]);
+appendMovieCard(movie[0], movie[1], movie[2], movie[3], movie[4], movie[5], movie[6], movie[7], movie[8], movie[9]);
 
 var reviews = {{ review_info | safe }};
 for(var i = 0; i < reviews.length; i++) {

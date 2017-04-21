@@ -43,6 +43,7 @@ def index(request):
     instance.append(actors)
     instance.append(tags)
     instance.append(genres)
+    instance.append(movie.img_url)
 
     container.append(instance)
 
@@ -101,12 +102,25 @@ def filters(request):
     instance.append(actors)
     instance.append(tags)
     instance.append(genres)
+    instance.append(movie.img_url)
+    instance.append(movie.duration)
 
     container.append(instance)
 
   current_user = Status.objects.all()
   current_user = current_user[0].logged_username
   current_user = User.objects.all().filter(username=current_user)[0]
+
+  sort_by = request.POST['sort']
+
+  if sort_by == 'title':
+    container = sorted(container, key=lambda instance : instance[1])
+
+  if sort_by == 'release':
+    container = sorted(container, key=lambda instance : instance[2])
+
+  if sort_by == 'duration':
+    container = sorted(container, key=lambda instance : instance[7])
 
   context = {
     'movies' : container,
@@ -148,6 +162,7 @@ def detail(request, mid):
   movie_info.append(tags)
   movie_info.append(movie.summary)
   movie_info.append(avg_rating)
+  movie_info.append(movie.img_url)
 
   review_info = []
   reviews = Review.objects.all().filter(mid=mid)
@@ -185,5 +200,15 @@ def add_review(request, mid):
   review = Review(mid=mid, uid=current_user.id, review=request.POST['review_text'])
   rating.save()
   review.save()
+
+  return HttpResponseRedirect(reverse('movies:index'))
+
+def add_favorite(request, mid):
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  favorite = Favorites(mid=mid, uid=current_user.id)
+  favorite.save()
 
   return HttpResponseRedirect(reverse('movies:index'))
