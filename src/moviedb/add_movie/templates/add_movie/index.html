@@ -74,6 +74,9 @@
         <br>
         <br>
         <button class="submit-role" onclick="appendCrewRole()"> Add Role </button>
+        {% if message %} 
+          <p><strong> {{ message }} </strong></p>
+        {% endif %}
 
       </div>
 
@@ -89,9 +92,6 @@
 
       </div>
 
-      {% if message %} 
-        <p><strong> {{ message }} </strong></p>
-      {% endif %}
     </div>
 
     <script>

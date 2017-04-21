@@ -32,32 +32,50 @@ def index(request):
 
 def upgrade_user(request):
 
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
   upgrade_username = request.POST['upgrade_username']
   user = User.objects.all().filter(username=upgrade_username)
   if not user:
-    return HttpResponseRedirect(reverse('home:index'))
+    context = {
+      'username' : current_user.username,
+      'is_admin' : current_user.is_admin,
+      'message' : '%s not found!' % upgrade_username,
+    }
+
+    return render(request, 'add_movie/index.html', context)
 
   user = user[0]
   user.is_admin = True
   user.save()
 
-  return HttpResponseRedirect(reverse('home:index'))
+  context = {
+    'username' : current_user.username,
+    'is_admin' : current_user.is_admin,
+    'message' : '%s upgraded to manager!' % upgrade_username,
+  }
+
+  return render(request, 'add_movie/index.html', context)
 
 def manage_movie(request):
   action = request.POST['action']
 
   if action == 'add':
-    add_movie(request)
+    return add_movie(request)
 
   elif action == 'remove':
-    remove_movie(request)
+    return remove_movie(request)
 
   elif action == 'update': 
-    update_movie(request)
-
-  return HttpResponseRedirect(reverse('home:index'))
+    return update_movie(request)
 
 def add_movie(request):
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
   title = request.POST['title']
   release = request.POST['release']
   genres = [x.strip() for x in request.POST['genre'].split(',')]
@@ -69,7 +87,12 @@ def add_movie(request):
   summary = request.POST['summary']
 
   if Movie.objects.all().filter(title=title):
-    return HttpResponseRedirect(reverse('home:index'))
+    context = {
+      'username' : current_user.username,
+      'is_admin' : current_user.is_admin,
+      'message' : '%s Added Already!' % title,
+    }
+    return render(request, 'add_movie/index.html', context)
 
   movie = Movie(title=title,
                 release=release,
@@ -93,13 +116,33 @@ def add_movie(request):
     obj = Crew(mid=mid, name=name, role=role.lower())
     obj.save()
 
-  return HttpResponseRedirect(reverse('home:index'))
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  context = {
+    'username' : current_user.username,
+    'is_admin' : current_user.is_admin,
+    'message' : '%s Added!' % title,
+  }
+
+  return render(request, 'add_movie/index.html', context)
 
 def remove_movie(request):
   title = request.POST['title']
 
-  movie = Movie.objects.get(title=title)
+  movie = Movie.objects.all().filter(title=title)
 
+  if not movie:
+    context = {
+      'username' : current_user.username,
+      'is_admin' : current_user.is_admin,
+      'message' : 'Movie not found to delete',
+    }
+
+    return render(request, 'add_movie/index.html', context)
+  
+  movie = movie[0]
   mid = movie.mid
 
   tags = Tags.objects.all().filter(mid=mid)
@@ -119,4 +162,102 @@ def remove_movie(request):
   remove_entries(rating)
   remove_entries(genres)
 
-  return HttpResponseRedirect(reverse('home:index'))
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  context = {
+    'username' : current_user.username,
+    'is_admin' : current_user.is_admin,
+    'message' : '%s removed!' % title,
+  }
+
+  return render(request, 'add_movie/index.html', context)
+
+def update_movie(request):
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  title = request.POST['title']
+  release = request.POST['release']
+  genres = [x.strip() for x in request.POST['genre'].split(',')]
+  language = request.POST['language']
+  duration = request.POST['duration']
+  film_crew = [x.strip() for x in request.POST['filmcrew'].split('|')]
+  tags = [x.strip() for x in request.POST['tags'].split(',')]
+  img_url = request.POST['img_url']
+  summary = request.POST['summary']
+
+  movie = Movie.objects.all().filter(title=title)
+
+  if not movie:
+    context = {
+      'username' : current_user.username,
+      'is_admin' : current_user.is_admin,
+      'message' : 'Movie not found to update',
+    }
+
+    return render(request, 'add_movie/index.html', context)
+  
+  movie = movie[0]
+  mid = movie.mid
+
+  old_tags = Tags.objects.all().filter(mid=mid)
+  old_crew = Crew.objects.all().filter(mid=mid)
+  old_review = Review.objects.all().filter(mid=mid)
+  old_rating = Rating.objects.all().filter(mid=mid)
+  old_genres = Genres.objects.all().filter(mid=mid)
+
+  new_genres = False
+  new_tags = False
+  new_film_crew = False
+
+  for genre in genres:
+    if genre.strip() != '':
+      new_genres = True
+  for tag in tags:
+    if tag.strip() != '':
+      new_tags = True
+  for crew in film_crew:
+    if crew.strip() != '':
+      new_film_crew = True
+
+  def delete_all(things):
+    for thing in things:
+      thing.delete()
+
+  if release:
+    movie.release = release
+  if language != '':
+    movie.language = language
+  if duration != '':
+    movie.duration = duration
+  if summary != '':
+    movie.summary = summary
+  movie.save()
+  if new_genres:
+    delete_all(old_genres)
+    for genre in genres:
+      obj = Genres(mid=mid, genres=genre.lower())
+      obj.save()
+  if new_tags:
+    delete_all(old_tags)
+    for tag in tags:
+      obj = Tags(mid=mid, tags=tag.lower())
+      obj.save()
+  if new_film_crew:
+    delete_all(old_crew)
+    for pair in film_crew:
+      if pair:
+        name, role = [x.strip() for x in pair.split(',')]
+        obj = Crew(mid=mid, name=name, role=role.lower())
+        obj.save()
+
+  context = {
+    'username' : current_user.username,
+    'is_admin' : current_user.is_admin,
+    'message' : '%s updated' % title,
+  }
+
+  return render(request, 'add_movie/index.html', context)

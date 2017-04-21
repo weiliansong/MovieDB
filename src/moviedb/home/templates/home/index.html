@@ -19,6 +19,10 @@
       {% endif %}
 
       <div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
+
+      {% if message %}
+        <div class="fixed-header-add" > {{ message }} </div>
+      {% endif %}
     </div>
 
     <div class="featured-movies">
