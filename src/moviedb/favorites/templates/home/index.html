@@ -35,15 +35,7 @@ function buildMovieCard(id, title, img, actors, year, genre, tags){
   var cardHTML = "<div class='movie-card'>";
 
   cardHTML += "<div class='movie-img-container'>";
-  
-  if(img != '') {
-    cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
-  }
-  else {
-    var tortilla = "{% static 'tortilla.jpg'%}"
-    cardHTML +=	"<img class='movie-img' src='" + tortilla +"'></img>";
-  }
-
+  cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
   cardHTML += "</div>";
 
   cardHTML += "<div class='movie-text-top'>";
@@ -63,7 +55,7 @@ function buildMovieCard(id, title, img, actors, year, genre, tags){
 
 };
 
-function appendMovieCard(id, title, year, actors, tags, genre, img){
+function appendMovieCard(img, id, title, year, actors, tags, genre){
   var cardHTML = buildMovieCard(id, title, img, actors, year, genre, tags);
 
   $('.featured-movies').append(cardHTML);
@@ -72,7 +64,7 @@ function appendMovieCard(id, title, year, actors, tags, genre, img){
 
 {% for movie in movies %}
   var movie = {{ movie | safe }};
-  appendMovieCard(movie[0], movie[1], movie[2], movie[3], movie[4], movie[5], movie[6]);
+  appendMovieCard("{% static 'tortilla.jpg' %}", movie[0], movie[1], movie[2], movie[3], movie[4], movie[5]);
 {% endfor %}
 
     </script>

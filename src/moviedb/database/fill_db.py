@@ -1,11 +1,12 @@
 from database.models import Movie, User, Crew, Tags, Genres
 
-def addMovie(title, release, language, duration, summary, tags, genres, film_crew):
+def addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url):
   movie = Movie(title=title,
                 release=release,
                 language=language,
                 duration=duration,
-                summary=summary)
+                summary=summary,
+                img_url=img_url)
   movie.save()
 
   mid = movie.mid
@@ -31,8 +32,9 @@ summary = 'An insomniac office worker, looking for a way to change his life, cro
 tags = ['Action Packed', 'Trippy', 'Twist Ending']
 genres = ['Drama', 'Thriller']
 film_crew = ['David Fincher, Director', 'Ross Grayson Bell, Producer', 'James Haygood, Editor', 'Chuck Palahniuk, Writer', 'Jared Leto, Actor', 'Helena Bonham Carter, Actor']
+img_url = 'https://images-na.ssl-images-amazon.com/images/M/MV5BZGY5Y2RjMmItNDg5Yy00NjUwLThjMTEtNDc2OGUzNTBiYmM1XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg'
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'There Will Be Blood'
 release = 2007
@@ -42,8 +44,9 @@ summary = 'A story of family, religion, hatred, oil and madness, focusing on a t
 tags = ['Intense', 'Dark', 'Suspenseful']
 genres = ['Drama', 'Historical Fiction']
 film_crew = ['Paul Thomas Anderson, Director', 'JoAnne Sellar, Producer', 'Dylan Tichenor, Editor', 'Upton Sinclair, Writer', 'Daniel Day-Lewis, Actor']
+img_url = 'https://upload.wikimedia.org/wikipedia/en/d/da/There_Will_Be_Blood_Poster.jpg'
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'The Fly'
 release = 1986
@@ -53,8 +56,9 @@ summary = 'A brilliant but eccentric scientist begins to transform into a giant 
 tags = ['Gore', 'Scary']
 genres = ['Horror', 'Drama']
 film_crew = ['David Cronenberg, Director', 'Stuart Cornfeld, Producer', 'Ronald Sanders, Editor', 'George Langelaan, Writer', 'Jeff Goldblum, Actor']
+img_url = 'https://images-na.ssl-images-amazon.com/images/M/MV5BNjI3OGRhYjUtZmY1MC00N2JlLWJjMDUtYmViNTE0NDA0NzZlXkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_UX182_CR0,0,182,268_AL_.jpg'
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Jurassic Park'
 release = 1993
@@ -64,8 +68,9 @@ summary = 'During a preview tour, a theme park suffers a major power breakdown t
 tags = ['Awesome', 'Dinosaurs', 'Classic']
 genres = ['Adventure', 'Horror']
 film_crew = ['Steven Spielburg, Director', 'Kathleen Kennedy, Producer', 'Michael Khan, Editor', 'Michael Crichton, Writer', 'Jeff Goldblum, Actor']
+img_url = 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_UX182_CR0,0,182,268_AL_.jpg'
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Wolf Of Wallstreet'
 release = 2013
@@ -75,8 +80,9 @@ summary = 'Based on the true story of Jordan Belfort, from his rise to a wealthy
 tags = ['Fast Paced', 'Drugs']
 genres = ['Biography']
 film_crew = ['Martin Scorsese, Director', 'Martin Scorsese, Producer', 'Thelma Schoonmaker, Editor', 'Jordan Belfort, Writer', 'Leonardo DiCaprio, Actor']
+img_url = 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_UY1200_CR90,0,630,1200_AL_.jpg'
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'The Shining'
 release = 1980
@@ -86,8 +92,9 @@ summary = 'A family heads to an isolated hotel for the winter where an evil and 
 tags = ['Crazed', 'Bloody']
 genres = ['Horror', 'Suspense']
 film_crew = ['Stanley Kubrick, Director', 'Stanley Kubrik, Producer', 'Ray Lovejoy, Editor', 'Stephen King, Writer', 'Jack Nicholson, Actor']
+img_url = 'http://static.rogerebert.com/uploads/movie/movie_poster/the-shining-1980/large_zc5y5OwKSV9MDXpfWxwrOjyRHsq.jpg'
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Pulp Fiction'
 release = 1994
@@ -97,8 +104,9 @@ summary = 'The lives of two mob hit men, a boxer, a gangsters wife, and a pair o
 tags = ['Marvin', 'Say What', 'Gimp']
 genres = ['Drama']
 film_crew = ['Quentin Tarantino, Director', 'Lawrence Bender, Producer', 'Sally Menke, Editor', 'Quentin Tarantino, Writer', 'Bruce Willis, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Requiem For A Dream'
 release = 2000
@@ -108,8 +116,9 @@ summary = 'The drug-induced utopias of four Coney Island people are shattered wh
 tags = ['Gritty', 'Drugs', 'Sad']
 genres = ['Drama']
 film_crew = ['Darren Aronofsky, Director', 'Eric Watson, Producer', 'Jay Rabinowitz, Editor', 'Hubert Selby Jr., Writer', 'Jared Leto, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Mistic River'
 release = 2003
@@ -119,8 +128,9 @@ summary = 'With a childhood tragedy that overshadowed their lives, three men are
 tags = ['Suspenseful', 'Sad']
 genres = ['Crime']
 film_crew = ['Clint Eastwood, Director', 'Robert Lorenz, Producer', 'Joel Cox, Editor', 'Dennis Lehane, Writer', 'Tim Robbins, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'The Shawshank Redemption'
 release = 1994
@@ -130,8 +140,9 @@ summary = 'Two imprisoned men bond over a number of years, finding solace and ev
 tags = ['Classic', 'Powerful', 'Inspiring']
 genres = ['Crime']
 film_crew = ['Frank Darabont, Director', 'Niki Marvin, Producer', 'Richard Francis-Bruce, Editor', 'Frank Darabont, Writer', 'Morgan Freeman, Actor', 'Tim Robbins, Andy Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'The Matrix'
 release = 1999
@@ -141,8 +152,9 @@ summary = 'A computer hacker learns from mysterious rebels about the true nature
 tags = ['Woah', 'Mind-Blowing', 'Kungfu']
 genres = ['Action', 'Sci-fi']
 film_crew = ['Lana Wachowski, Director', 'Lilly Wachowski, Director', 'Joel Silver, Producer', 'The Wachowski Brothers, Writer', 'Keanu Reeves, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 title = 'The Big Lebowski'
 release = 1998
 language = 'English'
@@ -151,8 +163,9 @@ summary = '"The Dude" Lebowski, mistaken for a millionaire Lebowski, seeks resti
 tags = ['Bowling', 'White Russian', 'Dude']
 genres = ['Comedy', 'Crime', 'Mystery']
 film_crew = ['Joel Cohen, Director', 'Ethan Cohen, Director', 'The Cohen Brothers, Writer', 'Ethan Cohen, Producer', 'Roderick Jaynes, Editor', 'Jeff Bridges, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Goodfellas'
 release = 1990
@@ -162,8 +175,9 @@ summary = 'Henry Hill and his friends work their way up through the mob hierarch
 tags = ['Brutal', 'Mafia', 'Made']
 genres = ['Biography', 'Crime', 'Drama']
 film_crew = ['Martin Scorsese, Director', 'Nicholas Pileggi, Writer', 'Irwin Winkler, Producer', 'Thelma Schoonmaker, Editor', 'Ray Liotta, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Terminator 2: Judgement Day'
 release = 1991
@@ -173,8 +187,9 @@ summary = 'A cyborg, identical to the one who failed to kill Sarah Connor, must 
 tags = ['Boots', 'Clothes', 'Motorcycle']
 genres = ['Action', 'Sci-fi', 'Thriller']
 film_crew = ['James Cameron, Director', 'James Cameron, Writer', 'James Cameron, Producer', 'Mark Goldblatt, Editor', 'Arnold Schwarzenegger, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Inception'
 release = 2010
@@ -184,8 +199,9 @@ summary = 'A thief, who steals corporate secrets through use of dream-sharing te
 tags = ['What?', 'Effects', 'Trippy']
 genres = ['Action', 'Adventure', 'Sci-fi']
 film_crew = ['Christopher Nolan, Director', 'Christopher Nolan, Writer', 'Emma Thomas, Producer', 'Lee Smith, Editor', 'Leonardo DiCaprio, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Citizen Kane'
 release = 1941
@@ -195,8 +211,9 @@ summary = 'Following the death of a publishing tycoon, news reporters scramble t
 tags = ['Rosebud', 'Classic']
 genres = ['Drama', 'Mystery']
 film_crew = ['Orson Welles, Director', 'Orson Welles, Writer', 'Orson Welles, Producer', 'Orson Welles, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Braveheart'
 release = 1995
@@ -206,8 +223,9 @@ summary = 'When his secret bride is executed for assaulting an English soldier w
 tags = ['Freedom', 'Bloody', 'Kilts']
 genres = ['Biography', 'Drama', 'History']
 film_crew = ['Mel Gibson, Director', 'Randall Wallace, Writer', 'Mel Gibson, Producer', 'Mel Gibson, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Gladiator'
 release = 2000
@@ -217,8 +235,9 @@ summary = 'When a Roman general is betrayed and his family murdered by an empero
 tags = ['War', 'Gore', 'Rome']
 genres = ['Action', 'Adventure', 'Drama']
 film_crew = ['Ridley Scott, Director', 'David Franzoni, Writer', 'Douglas Wick, Producer', 'Russell Crowe, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Interstellar'
 release = 2014
@@ -228,8 +247,9 @@ summary = 'A team of explorers travel through a wormhole in space in an attempt 
 tags = ['Space', 'Time']
 genres = ['Adventure', 'Drama', 'Sci-fi']
 film_crew = ['Christopher Nolan, Director', 'Jonathan Nolan, Writer', 'Emma Thomas, Producer', 'Matthew McConaughey, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Toy Story'
 release = 1995
@@ -239,8 +259,9 @@ summary = 'A cowboy doll is profoundly threatened and jealous when a new spacema
 tags = ['Family', 'Toys', 'Groundbreaking']
 genres = ['Animation', 'Comedy', 'Adventure']
 film_crew = ['John Lasseter, Director', 'Pete Docter, Writer', 'Bonnie Arnold, Producer', 'Tom Hanks, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Jaws'
 release = 1975
@@ -250,8 +271,9 @@ summary = 'A giant great white shark arrives on the shores of a New England beac
 tags = ['Sountrack', 'Classic', 'SHARK!']
 genres = ['Adventure', 'Drama', 'Thriller']
 film_crew = ['Steven Spielberg, Director', 'Peter Benchley, Writer', 'Richard D. Zanuck, Producer', 'Roy Schneider, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Apocalypse Now'
 release = 1979
@@ -261,8 +283,9 @@ summary = 'During the Vietnam War, Captain Willard is sent on a dangerous missio
 tags = ['Madness', 'Vietnam']
 genres = ['Drama', 'War']
 film_crew = ['Francis Ford Coppola, Director', 'John Milius, Writer', 'Francis Ford Coppola, Producer', 'Marlon Brondo, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Moon'
 release = 2009
@@ -272,8 +295,9 @@ summary = 'Astronaut Sam Bell has a quintessentially personal encounter toward t
 tags = ['Space', 'Trippy', 'Clones']
 genres = ['Drama', 'Mystery', 'Sci-fi']
 film_crew = ['Duncan Jones, Director', 'Duncan Jones, Writer', 'Stuart Fenegan, Producer', 'Sam Rockwell, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Pans Labyrinth'
 release = 2006
@@ -283,8 +307,9 @@ summary = 'In the falangist Spain of 1944, the bookish young stepdaughter of a s
 tags = ['Creepy', 'Dark']
 genres = ['Drama', 'Fantasy', 'War']
 film_crew = ['Guillermo del Toro, Director', 'Guillermo del Toro, Writer', 'Guillermo del Toro, Producer', 'Sergi Lopez, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'The Green Mile'
 release = 1999
@@ -294,8 +319,9 @@ summary = 'The lives of guards on Death Row are affected by one of their charges
 tags = ['Prison', 'Magic']
 genres = ['Crime', 'Drama', 'Fantasy']
 film_crew = ['Frank Darabont, Director', 'Stephen King, Writer', 'David Valdis, Producer', 'Tom Hanks, Actor', 'Michael Clarke Duncan, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Life of Pi'
 release = 2012
@@ -305,8 +331,9 @@ summary = 'A young man who survives a disaster at sea is hurtled into an epic jo
 tags = ['Tiger', 'Visual', 'Beautiful']
 genres = ['Adventure', 'Drama', 'Fantasy']
 film_crew = ['Ang Lee, Director', 'Yann Martel, Writer', 'Gil Netter, Producer', 'Suraj Sharma, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Three Kings'
 release = 1999
@@ -316,8 +343,9 @@ summary = 'In the aftermath of the Persian Gulf War, 4 soldiers set out to steal
 tags = ['War', 'Blood']
 genres = ['Action', 'Adventure', 'Comedy']
 film_crew = ['David O. Russell, Director', 'John Ridley, Writer', 'Charles Roven, Producer', 'Ice Cube, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Fargo'
 release = 1996
@@ -327,8 +355,9 @@ summary = "Jerry Lundegaard's inept crime falls apart due to his and his henchme
 tags = ['Accents', 'Brutal', 'Snow']
 genres = ['Crime', 'Drama', 'Thriller']
 film_crew = ['Joel Cohen, Director', 'Ethan Cohen, Director', 'The Cohen Brothers, Writer', 'Ethan Cohen, Producer', 'William H. Macy, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Oldboy'
 release = 2003
@@ -338,8 +367,9 @@ summary = 'After being kidnapped and imprisoned for fifteen years, Oh Dae-Su is 
 tags = ['Crazy', 'Brutal', 'Violent']
 genres = ['Drama', 'Mystery', 'Thriller']
 film_crew = ['Chan-wook Park, Director', 'Garon Tsuchiya, Writer', 'Im Seung-yong, Producer', 'Choi Min-sik, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 
 title = 'Gran Torino'
 release = 2008
@@ -349,8 +379,9 @@ summary = 'Disgruntled Korean War veteran Walt Kowalski sets out to reform his n
 tags = ['Intense', 'Cool']
 genres = ['Drama']
 film_crew = ['Clint Eastwood, Director', 'Nick Schenk, Writer', 'Clint Eastwood, Producer', 'Clint Eastwood, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)
 title = 'Reservoir Dogs'
 release = 1992
 language = 'English'
@@ -359,5 +390,6 @@ summary = 'After a simple jewelry heist goes terribly wrong, the surviving crimi
 tags = ['Gritty', 'Classic', 'Soundtrack']
 genres = ['Crime', 'Drama', 'Thriller']
 film_crew = ['Quentin Tarantino, Director', 'Quentin Tarantino, Writer', 'Lawrence Bender, Producer', 'Harvey Keitel, Actor']
+img_url = ''
 
-addMovie(title, release, language, duration, summary, tags, genres, film_crew)
+addMovie(title, release, language, duration, summary, tags, genres, film_crew, img_url)

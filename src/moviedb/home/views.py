@@ -25,7 +25,7 @@ def index(request):
   movies = Movie.objects.all()
 
   if len(movies) > 6:
-    movies = movies[:6]
+    movies = movies[len(movies)-6:]
 
   container = []
 
@@ -46,6 +46,7 @@ def index(request):
     instance.append(actors)
     instance.append(tags)
     instance.append(genres)
+    instance.append(movie.img_url)
 
     container.append(instance)
 

@@ -7,6 +7,7 @@ class Movie(models.Model):
   language = models.CharField(max_length=30)
   duration = models.IntegerField()
   summary = models.CharField(max_length=256)
+  img_url = models.CharField(max_length=256, default='')
 
 class User(models.Model):
   first_name = models.CharField(max_length=30)

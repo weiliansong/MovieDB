@@ -98,7 +98,8 @@ def add_movie(request):
                 release=release,
                 language=language,
                 duration=duration,
-                summary=summary)
+                summary=summary,
+                img_url=img_url)
   movie.save()
 
   mid = movie.mid
@@ -239,6 +240,8 @@ def update_movie(request):
     movie.duration = duration
   if summary != '':
     movie.summary = summary
+  if img_url != '':
+    movie.img_url = img_url
   movie.save()
   if new_genres:
     delete_all(old_genres)
