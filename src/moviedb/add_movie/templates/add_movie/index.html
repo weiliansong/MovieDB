@@ -27,7 +27,7 @@
         <input type="text" name="title">
         <br>
         <span> Release Date </span><br>
-        <input type="text" name="year">
+        <input type="text" name="release">
         <br>
         <span> Film Crew </span><br>
         <input type="text" class="filmcrew" name="filmcrew" placeholder="name, role | name, role | ....">
@@ -41,11 +41,14 @@
         <span> Tags </span><br>
         <input type="text" name="tags">
         <br>
+        <span> Genres </span><br>
+        <input type="text" name="genre">
+        <br>
         <span> Description </span><br>
-        <input type="text" name="description">
+        <input type="text" name="summary">
         <br>
         <span> Image URL</span><br>
-        <input type="text" name="image">
+        <input type="text" name="img_url">
         <br>
         <br>
         <select name='action'>
@@ -71,6 +74,18 @@
         <br>
         <br>
         <button class="submit-role" onclick="appendCrewRole()"> Add Role </button>
+
+      </div>
+
+      <div class="add-role">
+        <form action="{% url 'add_movie:upgrade_user' %}" method="post"> <h3> Upgrade User </h3>
+          {% csrf_token %}
+          <span> username </span><br>
+          <input type='text' name='upgrade_username'>
+          <br>
+          <br>
+          <br>
+          <button class="submit-upgrade" > Upgrade User </button>
 
       </div>
 

@@ -30,6 +30,19 @@ def index(request):
 
   return render(request, 'add_movie/index.html', context)
 
+def upgrade_user(request):
+
+  upgrade_username = request.POST['upgrade_username']
+  user = User.objects.all().filter(username=upgrade_username)
+  if not user:
+    return HttpResponseRedirect(reverse('home:index'))
+
+  user = user[0]
+  user.is_admin = True
+  user.save()
+
+  return HttpResponseRedirect(reverse('home:index'))
+
 def manage_movie(request):
   action = request.POST['action']
 
@@ -54,6 +67,9 @@ def add_movie(request):
   tags = [x.strip() for x in request.POST['tags'].split(',')]
   img_url = request.POST['img_url']
   summary = request.POST['summary']
+
+  if Movie.objects.all().filter(title=title):
+    return HttpResponseRedirect(reverse('home:index'))
 
   movie = Movie(title=title,
                 release=release,
@@ -82,7 +98,7 @@ def add_movie(request):
 def remove_movie(request):
   title = request.POST['title']
 
-  movie = Movie.objects.all().filter(title=title)
+  movie = Movie.objects.get(title=title)
 
   mid = movie.mid
 

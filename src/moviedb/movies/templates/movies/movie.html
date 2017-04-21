@@ -24,7 +24,8 @@
 
       </div>
 
-      <form class='add-review'>
+      <form class='add-review' action="{% url 'movies:add_review' mid %}" method="post">
+        {% csrf_token %}
         <select name='rating'> 
           <option value='1'> 1 Star </option>
           <option value='2'> 2 Star </option>
@@ -32,7 +33,7 @@
           <option value='4'> 4 Star </option>
           <option value='5'> 5 Star </option>
         </select>
-        <textarea class='review' placeholder="Write your review here...."> </textarea>
+        <textarea name='review_text' class='review' placeholder="Write your review here...."> </textarea>
         <input type="submit" value='Submit Review'>
       </form>
 
@@ -40,8 +41,6 @@
 
 
     <div class='user-reviews'>
-
-
 
     </div>
 
@@ -78,7 +77,7 @@ function buildMovieCard(title, img, actors, year, genre, duration, language, tag
 };
 
 
-function appendMovieCard(title, img, actors, year, genre, duration, language, tags, description, avgRating){
+function appendMovieCard(img, title, actors, year, genre, duration, language, tags, description, avgRating){
   var cardHTML = buildMovieCard(title, img, actors, year, genre, duration, language, tags, description, avgRating);
 
   $('.movie-container').append(cardHTML);
@@ -103,7 +102,13 @@ function appendReviewCard(username, rating, review){
   $('.user-reviews').append(cardHTML);
 }
 
+var movie = {{ movie_info | safe }};
+appendMovieCard("{% static 'tortilla.jpg' %}", movie[0], movie[1], movie[2], movie[3], movie[4], movie[5], movie[6], movie[7], movie[8]);
 
+var reviews = {{ review_info | safe }};
+for(var i = 0; i < reviews.length; i++) {
+  appendReviewCard(reviews[i][0], reviews[i][1], reviews[i][2]);
+}
 
     </script>
 

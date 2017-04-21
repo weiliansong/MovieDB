@@ -27,7 +27,7 @@
 
     <script>
 
-function buildMovieCard(title, img, actors, year, genre, tags){
+function buildMovieCard(id, title, img, actors, year, genre, tags){
   var cardHTML = "<div class='movie-card'>";
 
   cardHTML += "<div class='movie-img-container'>";
@@ -35,7 +35,7 @@ function buildMovieCard(title, img, actors, year, genre, tags){
   cardHTML += "</div>";
 
   cardHTML += "<div class='movie-text-top'>";
-  cardHTML += "<span> Title: " + title + "</span><br>";
+  cardHTML += "<a href=\"\/movies\/" + id + "\/\">" + "<span> Title: " + title + "</span></a><br>";
   cardHTML += "<span> Year: " + year + "</span><br>";
   cardHTML += "<span> Actors: " + actors + "</span><br>";
   cardHTML += "</div>";
@@ -51,8 +51,8 @@ function buildMovieCard(title, img, actors, year, genre, tags){
 
 };
 
-function appendMovieCard(img, title, year, actors, tags, genre){
-  var cardHTML = buildMovieCard(title, img, actors, year, genre, tags);
+function appendMovieCard(img, id, title, year, actors, tags, genre){
+  var cardHTML = buildMovieCard(id, title, img, actors, year, genre, tags);
 
   $('.featured-movies').append(cardHTML);
 
@@ -60,7 +60,7 @@ function appendMovieCard(img, title, year, actors, tags, genre){
 
 {% for movie in movies %}
   var movie = {{ movie | safe }};
-  appendMovieCard("{% static 'tortilla.jpg' %}", movie[0], movie[1], movie[2], movie[3], movie[4]);
+  appendMovieCard("{% static 'tortilla.jpg' %}", movie[0], movie[1], movie[2], movie[3], movie[4], movie[5]);
 {% endfor %}
 
     </script>

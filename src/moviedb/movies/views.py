@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 
-from database.models import Movie, Tags, Genres, Crew, Status, User
+from database.models import *
 
 def index(request):
   current_user = Status.objects.all()
@@ -65,7 +66,9 @@ def filters(request):
   movies = Movie.objects.all()
 
   if crew:
-    movies = movies.filter(crew=crew)
+    crew = Crew.objects.all().filter(name=crew)
+    mid = [x.mid for x in crew]
+    movies = movies.filter(mid__in=mid)
   if title:
     movies = movies.filter(title=title)
   if release:
@@ -114,4 +117,73 @@ def filters(request):
   return render(request, 'movies/index.html', context)
 
 def detail(request, mid):
-  return HttpResponse(mid)
+  movie = Movie.objects.get(mid=mid)
+  tags = Tags.objects.all().filter(mid=mid)
+  genres = Genres.objects.all().filter(mid=mid)
+  crew = Crew.objects.all().filter(mid=mid)
+
+  tags = [x.tags for x in tags]
+  genres = [x.genres for x in genres]
+  crew = [x.name for x in crew]
+
+  tags = ', '.join(tags)
+  genres = ', '.join(genres)
+  crew = ', '.join(crew)
+
+  avg_rating = 0
+  ratings = Rating.objects.all().filter(mid=mid)
+
+  if ratings:
+    for rating in ratings:
+      avg_rating += rating.rating
+    avg_rating /= len(ratings)
+
+  movie_info = []
+  movie_info.append(movie.title)
+  movie_info.append(crew)
+  movie_info.append(movie.release)
+  movie_info.append(genres)
+  movie_info.append(movie.duration)
+  movie_info.append(movie.language)
+  movie_info.append(tags)
+  movie_info.append(movie.summary)
+  movie_info.append(avg_rating)
+
+  review_info = []
+  reviews = Review.objects.all().filter(mid=mid)
+
+  for review in reviews:
+    review_text = review.review
+    uid = review.uid
+    username = User.objects.get(id=uid).username
+    rating = Rating.objects.get(mid=mid, uid=uid).rating
+    review_info.append([username, rating, review_text])
+
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  context = {
+    'mid' : movie.mid,
+    'movie_info' : movie_info,
+    'review_info' : review_info,
+    'username' : current_user.username,
+    'is_admin' : current_user.is_admin,
+  }
+
+  return render(request, 'movies/movie.html', context)
+
+def add_review(request, mid):
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  if Rating.objects.filter(mid=mid, uid=current_user.id):
+    return HttpResponseRedirect(reverse('movies:index'))
+
+  rating = Rating(mid=mid, uid=current_user.id, rating=int(request.POST['rating']))
+  review = Review(mid=mid, uid=current_user.id, review=request.POST['review_text'])
+  rating.save()
+  review.save()
+
+  return HttpResponseRedirect(reverse('movies:index'))
