@@ -1,28 +1,22 @@
 from django.db import models
 
 class Movie(models.Model):
-  id = models.AutoField(primary_key=True)
-  title = models.CharField(max_length=20)
-  genre = models.CharField(max_length=20)
+  mid = models.AutoField(primary_key=True)
+  title = models.CharField(max_length=30)
   release = models.IntegerField('year released')
-  language = models.CharField(max_length=20)
+  language = models.CharField(max_length=30)
   duration = models.IntegerField()
   summary = models.CharField(max_length=256)
 
 class User(models.Model):
-  GENDER_CHOICES = (
-    ('M', 'Male'),
-    ('F', 'Female'),
-  )
-
-  first_name = models.CharField(max_length=20)
+  first_name = models.CharField(max_length=30)
   middle_name = models.CharField(max_length=1)
-  last_name = models.CharField(max_length=20)
-  username = models.CharField(max_length=20)
-  dob = models.DateField('date released')
-  gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+  last_name = models.CharField(max_length=30)
+  username = models.CharField(max_length=30)
+  dob = models.CharField(max_length=10)
+  gender = models.CharField(max_length=5)
   is_admin = models.BooleanField(default=False)
-  password = models.CharField(max_length=20, default='')
+  password = models.CharField(max_length=30)
 
 class Crew(models.Model):
   mid = models.IntegerField(Movie)
@@ -37,8 +31,15 @@ class Rating(models.Model):
 class Review(models.Model):
   uid = models.IntegerField(User)
   mid = models.IntegerField(Movie)
-  review = models.CharField(max_length=256)
+  review = models.CharField(max_length=1024)
 
 class Tags(models.Model):
   mid = models.IntegerField()
-  tags = models.CharField(max_length=20)
+  tags = models.CharField(max_length=30)
+
+class Genres(models.Model):
+  mid = models.IntegerField()
+  genres = models.CharField(max_length=30)
+
+class Status(models.Model):
+  logged_username = models.CharField(max_length=30, default='')

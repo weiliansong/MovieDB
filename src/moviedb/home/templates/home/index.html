@@ -10,9 +10,14 @@
   <body>
 
     <div class="fixed-header">
-      <div class='fixed-header-title'  onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
-      <div class="fixed-header-login"  onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
-      <div class="fixed-header-add"    onclick="location.href='{% url 'add_movie:index' %}'"> Add </div>
+      <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'login:logout' %}'"> Logout </div>
+      <div class="fixed-header-login"> {{ username }} </div>
+
+      {% if is_admin %}
+        <div class="fixed-header-add" onclick="location.href='{% url 'add_movie:index' %}'"> Manage </div>
+      {% endif %}
+
       <div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
     </div>
 
@@ -46,7 +51,7 @@ function buildMovieCard(title, img, actors, year, genre, tags){
 
 };
 
-function appendMovieCard(title, img, actors, year, genre, tags){
+function appendMovieCard(img, title, year, actors, tags, genre){
   var cardHTML = buildMovieCard(title, img, actors, year, genre, tags);
 
   $('.featured-movies').append(cardHTML);
@@ -54,7 +59,8 @@ function appendMovieCard(title, img, actors, year, genre, tags){
 };
 
 {% for movie in movies %}
-appendMovieCard("{{ movie.title }}", "{% static 'tortilla.jpg' %}", "haha", {{ movie.release }}, "{{ movie.genre }}", "ha");
+  var movie = {{ movie | safe }};
+  appendMovieCard("{% static 'tortilla.jpg' %}", movie[0], movie[1], movie[2], movie[3], movie[4]);
 {% endfor %}
 
     </script>

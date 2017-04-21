@@ -1,7 +1,117 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from database.models import Movie, Tags, Genres, Crew, Status, User
+
 def index(request):
-	# Need context here, grab movies
-	context = {}
-	return render(request, 'movies/index.html', context)
+  current_user = Status.objects.all()
+
+  if not current_user:
+    context = {
+      'auth_message' : 'Please login first',
+    }
+    return render(request, 'login/index.html', context)
+
+  current_user = current_user[0].logged_username
+
+  if not current_user:
+    context = {
+      'auth_message' : 'Please login first',
+    }
+    return render(request, 'login/index.html', context)
+
+  # Display who is logged in here
+  movies = Movie.objects.all()
+
+  container = []
+
+  for movie in movies:
+    instance = []
+    instance.append(movie.mid)
+    instance.append(movie.title)
+    instance.append(movie.release)
+
+    tags = Tags.objects.all().filter(mid=movie.mid)
+    genres = Genres.objects.all().filter(mid=movie.mid)
+    actors = Crew.objects.all().filter(mid=movie.mid, role='actor')
+    
+    tags   = ','.join([x.tags for x in tags])
+    genres = ','.join([x.genres for x in genres])
+    actors = ','.join([x.name for x in actors])
+
+    instance.append(actors)
+    instance.append(tags)
+    instance.append(genres)
+
+    container.append(instance)
+
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  context = {
+    'movies' : container,
+    'username' : current_user.username,
+    'is_admin' : current_user.is_admin,
+  }
+
+  return render(request, 'movies/index.html', context)
+
+def filters(request):
+  crew = request.POST['crew']
+  title = request.POST['title']
+  release = request.POST['release']
+  tags = request.POST['tags']
+  genre = request.POST['genre']
+
+  movies = Movie.objects.all()
+
+  if crew:
+    movies = movies.filter(crew=crew)
+  if title:
+    movies = movies.filter(title=title)
+  if release:
+    movies = movies.filter(release=release)
+  if tags:
+    tags = Tags.objects.all().filter(tags=tags)
+    mid = [x.mid for x in tags]
+    movies = movies.filter(mid__in=mid)
+  if genre:
+    genre = Genres.objects.all().filter(genres=genre)
+    mid = [x.mid for x in genre]
+    movies = movies.filter(mid__in=mid)
+
+  container = []
+
+  for movie in movies:
+    instance = []
+    instance.append(movie.mid)
+    instance.append(movie.title)
+    instance.append(movie.release)
+
+    tags = Tags.objects.all().filter(mid=movie.mid)
+    genres = Genres.objects.all().filter(mid=movie.mid)
+    actors = Crew.objects.all().filter(mid=movie.mid, role='actor')
+    
+    tags   = ','.join([x.tags for x in tags])
+    genres = ','.join([x.genres for x in genres])
+    actors = ','.join([x.name for x in actors])
+
+    instance.append(actors)
+    instance.append(tags)
+    instance.append(genres)
+
+    container.append(instance)
+
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  context = {
+    'movies' : container,
+    'username' : current_user.username,
+    'is_admin' : current_user.is_admin,
+  }
+
+  return render(request, 'movies/index.html', context)
+
+def detail(request, mid):
+  return HttpResponse(mid)
