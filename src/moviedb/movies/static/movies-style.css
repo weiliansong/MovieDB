@@ -76,8 +76,8 @@ body div {scroll-behavior: smooth}
 .fixed-sidebar{
   position:fixed;
   top:10rem;
-  width:10rem;
-  height:50rem;
+  width:15rem;
+  height:45rem;
   z-index:1;
   background-color:#373737;
   left:0;
@@ -86,7 +86,7 @@ body div {scroll-behavior: smooth}
 .filters{
 	color: white;
 	margin: 1rem;
-
+	font-size: 1.25rem;
 }
 
 .filters h3{
@@ -98,10 +98,14 @@ body div {scroll-behavior: smooth}
 	height: 10rem;
 }
 
+.filters input{
+	width:13rem	;
+}
+
 .movies-container{
 
 	width: 170rem;
-	margin: 5rem 5rem 1rem 12rem;
+	margin: 5rem 5rem 1rem 19rem;
 
 	background-color: black; 
 

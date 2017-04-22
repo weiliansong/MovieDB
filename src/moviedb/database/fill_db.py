@@ -8,7 +8,7 @@ def addMovie(title, release, language, duration, summary, tags, genres, film_cre
                 summary=summary)
   movie.save()
 
-  mid = movie.id
+  mid = movie.mid
 
   for tag in tags:
     obj = Tags(mid=mid, tags=tag.lower())
@@ -323,7 +323,7 @@ title = 'Fargo'
 release = 1996
 language = 'English'
 duration = 98
-summary = 'Jerry Lundegaard's inept crime falls apart due to his and his henchmen's bungling and the persistent police work of the quite pregnant Marge Gunderson.'
+summary = "Jerry Lundegaard's inept crime falls apart due to his and his henchmen's bungling and the persistent police work of the quite pregnant Marge Gunderson."
 tags = ['Accents', 'Brutal', 'Snow']
 genres = ['Crime', 'Drama', 'Thriller']
 film_crew = ['Joel Cohen, Director', 'Ethan Cohen, Director', 'The Cohen Brothers, Writer', 'Ethan Cohen, Producer', 'William H. Macy, Actor']

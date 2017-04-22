@@ -10,10 +10,19 @@
   <body>
 
     <div class="fixed-header">
-      <div class='fixed-header-title'  onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
-      <div class="fixed-header-login"  onclick="location.href='{% url 'login:index' %}'"> Login/Register </div>
-      <div class="fixed-header-add"    onclick="location.href='{% url 'add_movie:index' %}'"> Add </div>
+      <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'login:logout' %}'"> Logout </div>
+      <div class="fixed-header-login"> {{ username }} </div>
+
+      {% if is_admin %}
+        <div class="fixed-header-add" onclick="location.href='{% url 'add_movie:index' %}'"> Manage </div>
+      {% endif %}
+
       <div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
+
+      {% if message %}
+        <div class="fixed-header-add" > {{ message }} </div>
+      {% endif %}
     </div>
 
     <div class="featured-movies">
@@ -22,7 +31,7 @@
 
     <script>
 
-function buildMovieCard(title, img, actors, year, genre, tags){
+function buildMovieCard(id, title, img, actors, year, genre, tags){
   var cardHTML = "<div class='movie-card'>";
 
   cardHTML += "<div class='movie-img-container'>";
@@ -30,7 +39,7 @@ function buildMovieCard(title, img, actors, year, genre, tags){
   cardHTML += "</div>";
 
   cardHTML += "<div class='movie-text-top'>";
-  cardHTML += "<span> Title: " + title + "</span><br>";
+  cardHTML += "<a href=\"\/movies\/" + id + "\/\">" + "<span> Title: " + title + "</span></a><br>";
   cardHTML += "<span> Year: " + year + "</span><br>";
   cardHTML += "<span> Actors: " + actors + "</span><br>";
   cardHTML += "</div>";
@@ -46,15 +55,16 @@ function buildMovieCard(title, img, actors, year, genre, tags){
 
 };
 
-function appendMovieCard(title, img, actors, year, genre, tags){
-  var cardHTML = buildMovieCard(title, img, actors, year, genre, tags);
+function appendMovieCard(img, id, title, year, actors, tags, genre){
+  var cardHTML = buildMovieCard(id, title, img, actors, year, genre, tags);
 
   $('.featured-movies').append(cardHTML);
 
 };
 
 {% for movie in movies %}
-appendMovieCard("{{ movie.title }}", "{% static 'tortilla.jpg' %}", "haha", {{ movie.release }}, "{{ movie.genre }}", "ha");
+  var movie = {{ movie | safe }};
+  appendMovieCard("{% static 'tortilla.jpg' %}", movie[0], movie[1], movie[2], movie[3], movie[4], movie[5]);
 {% endfor %}
 
     </script>
