@@ -1,0 +1,124 @@
+{% load static %}
+
+<HTML>
+  <title> MovieDB </title>
+  <head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'movie-page-style.css' %}"/>
+  </head>
+  <body>
+    <div class="fixed-header">
+      <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'login:logout' %}'"> Logout </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'favorites:index' %}'"> {{ username }} </div>
+
+      {% if is_admin %}
+        <div class="fixed-header-add" onclick="location.href='{% url 'add_movie:index' %}'"> Manage </div>
+      {% endif %}
+
+      <div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
+    </div>
+    <div class='review-container'>
+      <div class='movie-container'>
+
+      </div>
+
+      <form class='add-review' action="{% url 'movies:add_review' mid %}" method="post">
+        {% csrf_token %}
+        <select name='rating'> 
+          <option value='1'> 1 Star </option>
+          <option value='2'> 2 Star </option>
+          <option value='3'> 3 Star </option>
+          <option value='4'> 4 Star </option>
+          <option value='5'> 5 Star </option>
+        </select>
+        <textarea name='review_text' class='review' placeholder="Write your review here...."> </textarea>
+        <input type="submit" value='Submit Review'>
+      </form>
+
+    </div>
+
+
+    <div class='user-reviews'>
+
+    </div>
+
+    <script>
+
+function buildMovieCard(title, img, actors, year, genre, duration, language, tags, description, avgRating){
+  var cardHTML = "<div class='movie-card'>";
+
+  cardHTML += "<div class='movie-img-container'>";
+  if(img != '') {
+    cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
+  }
+  else {
+    var tortilla = "{% static 'tortilla.jpg'%}"
+    cardHTML +=	"<img class='movie-img' src='" + tortilla +"'></img>";
+  }
+  cardHTML += "</div>";
+
+  cardHTML += "<div class='movie-text-top'>";
+  cardHTML += "<span> Title: " + title + "</span><br>";
+  cardHTML += "<span> Release Date: " + year + "</span><br>";
+  cardHTML += "<span> Film Crew: " + actors + "</span><br>";
+  cardHTML += "<span> Duration: " + duration + "</span><br>";
+  cardHTML += "<span> Language: " + language + "</span><br>";
+  cardHTML += "<span> Tags: " + tags + "</span><br>";
+  cardHTML += "<span> Genre(s): " + genre + "</span><br>";
+  cardHTML += "<span> Average Rating: " + avgRating + "</span><br>";
+  cardHTML += "</div>";
+
+  cardHTML += "<div class='movie-text-bottom'>";
+
+  cardHTML += "<span> Description: " + description + "</span><br>";
+
+  cardHTML += "<a href={% url 'movies:add_favorite' mid %}>" + "<span>Add to favorites</span>" + "</a><br>";
+
+  cardHTML += "</div>";
+
+  cardHTML += "</div>";
+
+  return cardHTML;
+
+};
+
+
+function appendMovieCard(title, actors, year, genre, duration, language, tags, description, avgRating, img){
+  var cardHTML = buildMovieCard(title, img, actors, year, genre, duration, language, tags, description, avgRating);
+
+  $('.movie-container').append(cardHTML);
+
+};
+
+function buildReviewCard(username,rating, review){
+  var cardHTML = "<div class='review-card'>";
+
+  cardHTML += "<span>  " + username + " </span><br><br>";
+  cardHTML += "<li>  Rated this film " + rating + "/5 </li><br><br>";
+  cardHTML += "<span> " + review + "</span><br><br><br>";
+
+  cardHTML += "</div>";
+
+  return cardHTML;
+};
+
+function appendReviewCard(username, rating, review){
+  var cardHTML = buildReviewCard(username, rating, review);
+
+  $('.user-reviews').append(cardHTML);
+}
+
+var movie = {{ movie_info | safe }};
+appendMovieCard(movie[0], movie[1], movie[2], movie[3], movie[4], movie[5], movie[6], movie[7], movie[8], movie[9]);
+
+var reviews = {{ review_info | safe }};
+for(var i = 0; i < reviews.length; i++) {
+  appendReviewCard(reviews[i][0], reviews[i][1], reviews[i][2]);
+}
+
+    </script>
+
+  </body>
+</HTML>

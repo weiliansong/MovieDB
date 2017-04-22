@@ -1,0 +1,79 @@
+{% load static %}
+
+<HTML>
+  <title> MovieDB </title>
+  <head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+  </head>
+  <body>
+
+    <div class="fixed-header">
+      <div class='fixed-header-title' onclick="location.href='{% url 'home:index' %}'"> MovieDB </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'login:logout' %}'"> Logout </div>
+      <div class="fixed-header-login" onclick="location.href='{% url 'favorites:index' %}'"> {{ username }} </div>
+
+      {% if is_admin %}
+        <div class="fixed-header-add" onclick="location.href='{% url 'add_movie:index' %}'"> Manage </div>
+      {% endif %}
+
+      <div class="fixed-header-movies" onclick="location.href='{% url 'movies:index' %}'"> Movies </div>
+
+      {% if message %}
+        <div class="fixed-header-add" > {{ message }} </div>
+      {% endif %}
+    </div>
+
+    <div class="featured-movies">
+
+    </div>
+
+    <script>
+
+function buildMovieCard(id, title, img, actors, year, genre, tags){
+  var cardHTML = "<div class='movie-card'>";
+
+  cardHTML += "<div class='movie-img-container'>";
+  if(img != '') {
+    cardHTML +=	"<img class='movie-img' src='" + img +"'></img>";
+  }
+  else {
+    var tortilla = "{% static 'tortilla.jpg'%}"
+    cardHTML +=	"<img class='movie-img' src='" + tortilla +"'></img>";
+  }
+  cardHTML += "</div>";
+
+  cardHTML += "<div class='movie-text-top'>";
+  cardHTML += "<a href=\"\/movies\/" + id + "\/\">" + "<span> Title: " + title + "</span></a><br>";
+  cardHTML += "<span> Year: " + year + "</span><br>";
+  cardHTML += "<span> Actors: " + actors + "</span><br>";
+  cardHTML += "</div>";
+
+  cardHTML += "<div class='movie-text-bottom'>";
+  cardHTML += "<span> Tags: " + tags + "</span><br>";
+  cardHTML += "<span> Genre(s): " + genre + "</span><br>";
+  cardHTML += "<a href=\"\/favorites\/" + id + "\/del_favorite\">" + "<span>Delete from favorites</span>" + "</a><br>";
+  cardHTML += "</div>";
+
+  cardHTML += "</div>";
+
+  return cardHTML;
+
+};
+
+function appendMovieCard(id, title, year, actors, tags, genre, img){
+  var cardHTML = buildMovieCard(id, title, img, actors, year, genre, tags);
+
+  $('.featured-movies').append(cardHTML);
+
+};
+
+{% for movie in movies %}
+  var movie = {{ movie | safe }};
+  appendMovieCard(movie[0], movie[1], movie[2], movie[3], movie[4], movie[5], movie[6]);
+{% endfor %}
+
+    </script>
+  </body>
+</HTML>

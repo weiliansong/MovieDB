@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse 
-from django.template import loader
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 
-from database.models import Movie, Tags, Genres, Crew, Status, User
+from database.models import *
 
 def index(request):
   current_user = Status.objects.all()
@@ -14,6 +14,7 @@ def index(request):
     return render(request, 'login/index.html', context)
 
   current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
 
   if not current_user:
     context = {
@@ -21,15 +22,13 @@ def index(request):
     }
     return render(request, 'login/index.html', context)
 
-  # Display who is logged in here
-  movies = Movie.objects.all()
-
-  if len(movies) > 6:
-    movies = movies[:6]
+  favorites = Favorites.objects.all().filter(uid=current_user.id)
+  favorites = [x.mid for x in favorites]
+  favorites = Movie.objects.all().filter(mid__in=favorites)
 
   container = []
 
-  for movie in movies:
+  for movie in favorites:
     instance = []
     instance.append(movie.mid)
     instance.append(movie.title)
@@ -50,12 +49,20 @@ def index(request):
 
     container.append(instance)
 
-  current_user = User.objects.all().filter(username=current_user)[0]
-
   context = {
     'movies' : container,
     'username' : 'Hello, %s %s' % (current_user.first_name, current_user.last_name),
     'is_admin' : current_user.is_admin,
   }
 
-  return render(request, 'home/index.html', context)
+  return render(request, 'favorites/index.html', context)
+
+def del_favorite(request, mid):
+  current_user = Status.objects.all()
+  current_user = current_user[0].logged_username
+  current_user = User.objects.all().filter(username=current_user)[0]
+
+  favorites = Favorites.objects.get(mid=mid, uid=current_user.id)
+  favorites.delete()
+
+  return HttpResponseRedirect(reverse('favorites:index'))

@@ -1,0 +1,160 @@
+html {
+		font-size: 62.5%;
+	}
+*{
+	font-family: arial;
+}
+body{
+  background-color:#F4F4F4;
+	margin:0rem;
+  overflow-x: hidden;
+}
+body div {scroll-behavior: smooth}
+.fixed-header {
+  position:fixed;
+  top:0;
+  width:100%;
+  height:5rem;
+  z-index:1;
+  background-color:#373737;
+
+}
+
+	.fixed-header-title{
+		height:3.5rem;
+		width:15%;
+		float:left;
+		font-size: 2.5rem;
+		text-align: left;
+		background-color: #373737;
+		color:#F4F4F4;
+		font-family: arial;
+		padding: 1rem 0 0 1rem;
+
+	}
+
+  .fixed-header-login{
+    height:3.5rem;
+    width:10%;
+    float:right;
+    font-size: 2rem;
+    text-align: center;
+		background-color: #373737;
+		color:#F4F4F4;
+		font-family: arial;
+		padding-top:1.5rem;
+	}
+	.fixed-header-add{
+		height:3.5rem;
+		width:10%;
+		float:right;
+		font-size: 2rem;
+		text-align: center;
+		padding-top:1.5rem;
+		background-color: #373737;
+		color:#F4F4F4;
+		font-family: arial;
+	}
+	.fixed-header-movies{
+		height:3.5rem;
+		width:10%;
+		float:right;
+		font-size: 2rem;
+		text-align: center;
+		background-color: #373737;
+		color:#F4F4F4;
+		font-family: arial;
+		padding-top:1.5rem;
+
+	}
+
+  .fixed-header div:hover{
+    font-weight: bold;
+  }
+
+
+.movie-container{
+
+	width: 170rem;
+	margin: 5rem 5rem 1rem 12rem;
+			margin-top:7.5rem;
+
+	background-color: black; 
+
+}
+.movie-card{
+	width: 70rem;
+	height: 40rem;
+	float: left;
+	margin: 2rem;
+	background-color: white;
+}
+
+.movie-img-container{
+		float:left;
+		margin:.25rem;
+		height: 60%;
+		width: 18rem;
+	}
+.movie-img{
+	height:100%;
+}
+.movie-text-top{
+	float:left;
+	margin:.25rem;
+	height: 60%;
+	width: 48rem;
+	font-size: 1rem;
+}
+.movie-text-top span{
+	font-size: 1.5rem;
+	margin: .5rem;
+}
+.movie-text-bottom{
+	float:left;
+	margin:.25rem;
+	height: 14rem;
+	width: 66rem;
+}
+
+.movie-text-bottom span{
+	font-size: 1.5rem;
+	margin: .5rem;
+}
+
+.review-container{
+margin-top:7.5rem;
+   height: 40rem;
+   position: relative;
+       width: 190rem;
+}
+
+.add-review{
+   margin: 5rem;
+}
+
+select{
+	height:2.5rem;
+	width:10rem;
+}
+textarea{
+	width:95rem;
+	height:32rem;
+	font-size:2rem;
+	margin-top:2rem;
+}
+
+.user-reviews{
+	position: relative;
+    float: left;
+    width: 170rem;
+    margin-left: 10rem;
+
+}
+
+.review-card{
+	font-size:1.5rem;
+	background-color: white;
+	    padding-left:10rem;
+	    border: solid black 2px;
+}
